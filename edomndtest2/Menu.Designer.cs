@@ -32,11 +32,22 @@
             ColdBtn = new Button();
             HotOrCold = new Panel();
             panel1 = new Panel();
+            OrderList = new ListBox();
             label1 = new Label();
-            ColdMenu = new Panel();
-            HotMenu = new Panel();
-            flowLayoutPanel1 = new FlowLayoutPanel();
-            button1 = new Button();
+            ColdMenuPanel = new Panel();
+            ColdMenuFlow = new FlowLayoutPanel();
+            button10 = new Button();
+            button11 = new Button();
+            button12 = new Button();
+            button13 = new Button();
+            button14 = new Button();
+            button15 = new Button();
+            button16 = new Button();
+            button17 = new Button();
+            button18 = new Button();
+            HotMenuPanel = new Panel();
+            HotMenuFlow = new FlowLayoutPanel();
+            esspressoBtn = new Button();
             button2 = new Button();
             button3 = new Button();
             button4 = new Button();
@@ -46,11 +57,12 @@
             button8 = new Button();
             button9 = new Button();
             helpProvider1 = new HelpProvider();
-            OrderList = new ListBox();
             HotOrCold.SuspendLayout();
             panel1.SuspendLayout();
-            HotMenu.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
+            ColdMenuPanel.SuspendLayout();
+            ColdMenuFlow.SuspendLayout();
+            HotMenuPanel.SuspendLayout();
+            HotMenuFlow.SuspendLayout();
             SuspendLayout();
             // 
             // HotBtn
@@ -76,8 +88,8 @@
             // HotOrCold
             // 
             HotOrCold.Controls.Add(panel1);
-            HotOrCold.Controls.Add(ColdMenu);
-            HotOrCold.Controls.Add(HotMenu);
+            HotOrCold.Controls.Add(ColdMenuPanel);
+            HotOrCold.Controls.Add(HotMenuPanel);
             HotOrCold.Controls.Add(ColdBtn);
             HotOrCold.Controls.Add(HotBtn);
             HotOrCold.Dock = DockStyle.Fill;
@@ -97,6 +109,15 @@
             panel1.Size = new Size(264, 274);
             panel1.TabIndex = 4;
             // 
+            // OrderList
+            // 
+            OrderList.FormattingEnabled = true;
+            OrderList.ItemHeight = 15;
+            OrderList.Location = new Point(13, 49);
+            OrderList.Name = "OrderList";
+            OrderList.Size = new Size(234, 199);
+            OrderList.TabIndex = 1;
+            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -106,48 +127,150 @@
             label1.TabIndex = 0;
             label1.Text = "label1";
             // 
-            // ColdMenu
+            // ColdMenuPanel
             // 
-            ColdMenu.Location = new Point(706, 22);
-            ColdMenu.Name = "ColdMenu";
-            ColdMenu.Size = new Size(384, 404);
-            ColdMenu.TabIndex = 3;
-            ColdMenu.Paint += ColdMenu_Paint;
+            ColdMenuPanel.Controls.Add(ColdMenuFlow);
+            ColdMenuPanel.Location = new Point(706, 22);
+            ColdMenuPanel.Name = "ColdMenuPanel";
+            ColdMenuPanel.Size = new Size(384, 429);
+            ColdMenuPanel.TabIndex = 3;
+            ColdMenuPanel.Paint += ColdMenu_Paint;
             // 
-            // HotMenu
+            // ColdMenuFlow
             // 
-            HotMenu.Controls.Add(flowLayoutPanel1);
-            HotMenu.Location = new Point(301, 22);
-            HotMenu.Name = "HotMenu";
-            HotMenu.Size = new Size(384, 404);
-            HotMenu.TabIndex = 2;
+            ColdMenuFlow.Controls.Add(button10);
+            ColdMenuFlow.Controls.Add(button11);
+            ColdMenuFlow.Controls.Add(button12);
+            ColdMenuFlow.Controls.Add(button13);
+            ColdMenuFlow.Controls.Add(button14);
+            ColdMenuFlow.Controls.Add(button15);
+            ColdMenuFlow.Controls.Add(button16);
+            ColdMenuFlow.Controls.Add(button17);
+            ColdMenuFlow.Controls.Add(button18);
+            ColdMenuFlow.Dock = DockStyle.Fill;
+            ColdMenuFlow.Location = new Point(0, 0);
+            ColdMenuFlow.Name = "ColdMenuFlow";
+            ColdMenuFlow.Size = new Size(384, 429);
+            ColdMenuFlow.TabIndex = 1;
             // 
-            // flowLayoutPanel1
+            // button10
             // 
-            flowLayoutPanel1.Controls.Add(button1);
-            flowLayoutPanel1.Controls.Add(button2);
-            flowLayoutPanel1.Controls.Add(button3);
-            flowLayoutPanel1.Controls.Add(button4);
-            flowLayoutPanel1.Controls.Add(button5);
-            flowLayoutPanel1.Controls.Add(button6);
-            flowLayoutPanel1.Controls.Add(button7);
-            flowLayoutPanel1.Controls.Add(button8);
-            flowLayoutPanel1.Controls.Add(button9);
-            flowLayoutPanel1.Dock = DockStyle.Fill;
-            flowLayoutPanel1.Location = new Point(0, 0);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(384, 404);
-            flowLayoutPanel1.TabIndex = 0;
+            button10.Location = new Point(3, 3);
+            button10.Name = "button10";
+            button10.Size = new Size(119, 134);
+            button10.TabIndex = 0;
+            button10.Text = "button10";
+            button10.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // button11
             // 
-            button1.Location = new Point(3, 3);
-            button1.Name = "button1";
-            button1.Size = new Size(119, 134);
-            button1.TabIndex = 0;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            button11.Location = new Point(128, 3);
+            button11.Name = "button11";
+            button11.Size = new Size(119, 134);
+            button11.TabIndex = 1;
+            button11.Text = "button11";
+            button11.UseVisualStyleBackColor = true;
+            // 
+            // button12
+            // 
+            button12.Location = new Point(253, 3);
+            button12.Name = "button12";
+            button12.Size = new Size(119, 134);
+            button12.TabIndex = 2;
+            button12.Text = "button12";
+            button12.UseVisualStyleBackColor = true;
+            // 
+            // button13
+            // 
+            button13.Location = new Point(3, 143);
+            button13.Name = "button13";
+            button13.Size = new Size(119, 134);
+            button13.TabIndex = 3;
+            button13.Text = "button13";
+            button13.UseVisualStyleBackColor = true;
+            // 
+            // button14
+            // 
+            button14.Location = new Point(128, 143);
+            button14.Name = "button14";
+            button14.Size = new Size(119, 134);
+            button14.TabIndex = 4;
+            button14.Text = "button14";
+            button14.UseVisualStyleBackColor = true;
+            // 
+            // button15
+            // 
+            button15.Location = new Point(253, 143);
+            button15.Name = "button15";
+            button15.Size = new Size(119, 134);
+            button15.TabIndex = 5;
+            button15.Text = "button15";
+            button15.UseVisualStyleBackColor = true;
+            // 
+            // button16
+            // 
+            button16.Location = new Point(3, 283);
+            button16.Name = "button16";
+            button16.Size = new Size(119, 134);
+            button16.TabIndex = 6;
+            button16.Text = "button16";
+            button16.UseVisualStyleBackColor = true;
+            // 
+            // button17
+            // 
+            button17.Location = new Point(128, 283);
+            button17.Name = "button17";
+            button17.Size = new Size(119, 134);
+            button17.TabIndex = 7;
+            button17.Text = "button17";
+            button17.UseVisualStyleBackColor = true;
+            // 
+            // button18
+            // 
+            button18.Location = new Point(253, 283);
+            button18.Name = "button18";
+            button18.Size = new Size(119, 134);
+            button18.TabIndex = 8;
+            button18.Text = "button18";
+            button18.UseVisualStyleBackColor = true;
+            // 
+            // HotMenuPanel
+            // 
+            HotMenuPanel.Controls.Add(HotMenuFlow);
+            HotMenuPanel.Location = new Point(301, 22);
+            HotMenuPanel.Name = "HotMenuPanel";
+            HotMenuPanel.Size = new Size(384, 429);
+            HotMenuPanel.TabIndex = 2;
+            // 
+            // HotMenuFlow
+            // 
+            HotMenuFlow.Controls.Add(esspressoBtn);
+            HotMenuFlow.Controls.Add(button2);
+            HotMenuFlow.Controls.Add(button3);
+            HotMenuFlow.Controls.Add(button4);
+            HotMenuFlow.Controls.Add(button5);
+            HotMenuFlow.Controls.Add(button6);
+            HotMenuFlow.Controls.Add(button7);
+            HotMenuFlow.Controls.Add(button8);
+            HotMenuFlow.Controls.Add(button9);
+            HotMenuFlow.Dock = DockStyle.Fill;
+            HotMenuFlow.Location = new Point(0, 0);
+            HotMenuFlow.Name = "HotMenuFlow";
+            HotMenuFlow.Size = new Size(384, 429);
+            HotMenuFlow.TabIndex = 0;
+            // 
+            // esspressoBtn
+            // 
+            esspressoBtn.BackColor = Color.FromArgb(255, 192, 128);
+            esspressoBtn.BackgroundImage = Properties.Resources.Esspresso;
+            esspressoBtn.BackgroundImageLayout = ImageLayout.Center;
+            esspressoBtn.Location = new Point(3, 3);
+            esspressoBtn.Name = "esspressoBtn";
+            esspressoBtn.Size = new Size(119, 134);
+            esspressoBtn.TabIndex = 0;
+            esspressoBtn.Text = "Esspresso";
+            esspressoBtn.UseVisualStyleBackColor = false;
+            esspressoBtn.Click += esspressoBtn_Click;
             // 
             // button2
             // 
@@ -221,15 +344,6 @@
             button9.Text = "button9";
             button9.UseVisualStyleBackColor = true;
             // 
-            // OrderList
-            // 
-            OrderList.FormattingEnabled = true;
-            OrderList.ItemHeight = 15;
-            OrderList.Location = new Point(13, 49);
-            OrderList.Name = "OrderList";
-            OrderList.Size = new Size(234, 199);
-            OrderList.TabIndex = 1;
-            // 
             // Menu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -242,8 +356,10 @@
             HotOrCold.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            HotMenu.ResumeLayout(false);
-            flowLayoutPanel1.ResumeLayout(false);
+            ColdMenuPanel.ResumeLayout(false);
+            ColdMenuFlow.ResumeLayout(false);
+            HotMenuPanel.ResumeLayout(false);
+            HotMenuFlow.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -253,10 +369,10 @@
         private Button ColdBtn;
         private Panel HotOrCold;
         private HelpProvider helpProvider1;
-        private Panel HotMenu;
-        private Panel ColdMenu;
-        private FlowLayoutPanel flowLayoutPanel1;
-        private Button button1;
+        private Panel HotMenuPanel;
+        private Panel ColdMenuPanel;
+        private FlowLayoutPanel HotMenuFlow;
+        private Button esspressoBtn;
         private Panel panel1;
         private Label label1;
         private Button button2;
@@ -268,5 +384,15 @@
         private Button button8;
         private Button button9;
         private ListBox OrderList;
+        private FlowLayoutPanel ColdMenuFlow;
+        private Button button10;
+        private Button button11;
+        private Button button12;
+        private Button button13;
+        private Button button14;
+        private Button button15;
+        private Button button16;
+        private Button button17;
+        private Button button18;
     }
 }
