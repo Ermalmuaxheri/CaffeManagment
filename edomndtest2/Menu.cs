@@ -114,5 +114,10 @@ namespace edomndtest2
         {
             this.Close();
         }
+
+        private void iceLatteBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

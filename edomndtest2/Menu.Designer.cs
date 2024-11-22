@@ -31,6 +31,7 @@
             HotBtn = new Button();
             ColdBtn = new Button();
             HotOrCold = new Panel();
+            DoneBtn = new Button();
             panel1 = new Panel();
             OrderList = new ListBox();
             label1 = new Label();
@@ -47,7 +48,7 @@
             whiteMochaBtn = new Button();
             ColdMenuPanel = new Panel();
             ColdMenuFlow = new FlowLayoutPanel();
-            button10 = new Button();
+            iceLatteBtn = new Button();
             button11 = new Button();
             button12 = new Button();
             button13 = new Button();
@@ -57,7 +58,6 @@
             button17 = new Button();
             button18 = new Button();
             helpProvider1 = new HelpProvider();
-            DoneBtn = new Button();
             HotOrCold.SuspendLayout();
             panel1.SuspendLayout();
             HotMenuPanel.SuspendLayout();
@@ -97,8 +97,20 @@
             HotOrCold.Dock = DockStyle.Fill;
             HotOrCold.Location = new Point(0, 0);
             HotOrCold.Name = "HotOrCold";
-            HotOrCold.Size = new Size(756, 533);
+            HotOrCold.Size = new Size(1142, 533);
             HotOrCold.TabIndex = 2;
+            // 
+            // DoneBtn
+            // 
+            DoneBtn.BackColor = Color.PaleTurquoise;
+            DoneBtn.ForeColor = SystemColors.ActiveCaptionText;
+            DoneBtn.Location = new Point(12, 448);
+            DoneBtn.Name = "DoneBtn";
+            DoneBtn.Size = new Size(264, 47);
+            DoneBtn.TabIndex = 5;
+            DoneBtn.Text = "Done";
+            DoneBtn.UseVisualStyleBackColor = false;
+            DoneBtn.Click += DoneBtn_Click;
             // 
             // panel1
             // 
@@ -158,9 +170,9 @@
             // 
             // esspressoBtn
             // 
-            esspressoBtn.BackColor = Color.FromArgb(255, 192, 128);
+            esspressoBtn.BackColor = Color.White;
             esspressoBtn.BackgroundImage = Properties.Resources.Esspresso;
-            esspressoBtn.BackgroundImageLayout = ImageLayout.Stretch;
+            esspressoBtn.BackgroundImageLayout = ImageLayout.Zoom;
             esspressoBtn.Font = new Font("Segoe UI", 12F);
             esspressoBtn.ForeColor = SystemColors.ControlText;
             esspressoBtn.Location = new Point(2, 2);
@@ -193,7 +205,7 @@
             // capuchinoBtn
             // 
             capuchinoBtn.BackgroundImage = Properties.Resources.capuchino;
-            capuchinoBtn.BackgroundImageLayout = ImageLayout.Stretch;
+            capuchinoBtn.BackgroundImageLayout = ImageLayout.Zoom;
             capuchinoBtn.Font = new Font("Segoe UI", 12F);
             capuchinoBtn.Location = new Point(251, 3);
             capuchinoBtn.Name = "capuchinoBtn";
@@ -207,7 +219,7 @@
             // macchiatoBtn
             // 
             macchiatoBtn.BackgroundImage = Properties.Resources.Machiato;
-            macchiatoBtn.BackgroundImageLayout = ImageLayout.Stretch;
+            macchiatoBtn.BackgroundImageLayout = ImageLayout.Zoom;
             macchiatoBtn.Font = new Font("Segoe UI", 12F);
             macchiatoBtn.Location = new Point(3, 159);
             macchiatoBtn.Name = "macchiatoBtn";
@@ -221,7 +233,7 @@
             // americanoBtn
             // 
             americanoBtn.BackgroundImage = Properties.Resources.pngtree_americano_coffee_beans_transparent_white_background_png_image_6698453;
-            americanoBtn.BackgroundImageLayout = ImageLayout.Stretch;
+            americanoBtn.BackgroundImageLayout = ImageLayout.Zoom;
             americanoBtn.Font = new Font("Segoe UI", 12F);
             americanoBtn.Location = new Point(128, 159);
             americanoBtn.Name = "americanoBtn";
@@ -235,7 +247,7 @@
             // brewedBtn
             // 
             brewedBtn.BackgroundImage = Properties.Resources.Brewed;
-            brewedBtn.BackgroundImageLayout = ImageLayout.Stretch;
+            brewedBtn.BackgroundImageLayout = ImageLayout.Zoom;
             brewedBtn.Font = new Font("Segoe UI", 12F);
             brewedBtn.Location = new Point(253, 159);
             brewedBtn.Name = "brewedBtn";
@@ -291,14 +303,14 @@
             // ColdMenuPanel
             // 
             ColdMenuPanel.Controls.Add(ColdMenuFlow);
-            ColdMenuPanel.Location = new Point(352, 22);
+            ColdMenuPanel.Location = new Point(755, 24);
             ColdMenuPanel.Name = "ColdMenuPanel";
             ColdMenuPanel.Size = new Size(384, 471);
             ColdMenuPanel.TabIndex = 3;
             // 
             // ColdMenuFlow
             // 
-            ColdMenuFlow.Controls.Add(button10);
+            ColdMenuFlow.Controls.Add(iceLatteBtn);
             ColdMenuFlow.Controls.Add(button11);
             ColdMenuFlow.Controls.Add(button12);
             ColdMenuFlow.Controls.Add(button13);
@@ -313,17 +325,19 @@
             ColdMenuFlow.Size = new Size(384, 471);
             ColdMenuFlow.TabIndex = 1;
             // 
-            // button10
+            // iceLatteBtn
             // 
-            button10.BackgroundImageLayout = ImageLayout.Stretch;
-            button10.Font = new Font("Segoe UI", 12F);
-            button10.Location = new Point(3, 3);
-            button10.Name = "button10";
-            button10.Size = new Size(119, 149);
-            button10.TabIndex = 0;
-            button10.Text = "button10";
-            button10.TextAlign = ContentAlignment.BottomCenter;
-            button10.UseVisualStyleBackColor = true;
+            iceLatteBtn.BackgroundImage = Properties.Resources.Brewed1;
+            iceLatteBtn.BackgroundImageLayout = ImageLayout.Zoom;
+            iceLatteBtn.Font = new Font("Segoe UI", 12F);
+            iceLatteBtn.Location = new Point(3, 3);
+            iceLatteBtn.Name = "iceLatteBtn";
+            iceLatteBtn.Size = new Size(119, 149);
+            iceLatteBtn.TabIndex = 0;
+            iceLatteBtn.Text = "Ice Latte";
+            iceLatteBtn.TextAlign = ContentAlignment.BottomCenter;
+            iceLatteBtn.UseVisualStyleBackColor = true;
+            iceLatteBtn.Click += iceLatteBtn_Click;
             // 
             // button11
             // 
@@ -421,23 +435,11 @@
             button18.TextAlign = ContentAlignment.BottomCenter;
             button18.UseVisualStyleBackColor = true;
             // 
-            // DoneBtn
-            // 
-            DoneBtn.BackColor = Color.PaleTurquoise;
-            DoneBtn.ForeColor = SystemColors.ActiveCaptionText;
-            DoneBtn.Location = new Point(12, 448);
-            DoneBtn.Name = "DoneBtn";
-            DoneBtn.Size = new Size(264, 47);
-            DoneBtn.TabIndex = 5;
-            DoneBtn.Text = "Done";
-            DoneBtn.UseVisualStyleBackColor = false;
-            DoneBtn.Click += DoneBtn_Click;
-            // 
             // Menu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(756, 533);
+            ClientSize = new Size(1142, 533);
             Controls.Add(HotOrCold);
             Name = "Menu";
             Text = "Menu";
@@ -474,7 +476,7 @@
         private Button whiteMochaBtn;
         private ListBox OrderList;
         private FlowLayoutPanel ColdMenuFlow;
-        private Button button10;
+        private Button iceLatteBtn;
         private Button button11;
         private Button button12;
         private Button button13;
