@@ -1,102 +1,118 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics.Metrics;
-using System.Drawing;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace edomndtest2
 {
     public partial class Menu : Form
     {
+        // Counters for each drink
+        int Esspresso = 0;
+        int Latte = 0;
+        int Macchiato = 0;
+        int Cappuccino = 0;
+        int Americano = 0;
+        int Mocha = 0;
+        int WhiteMocha = 0;
+        int Brewed = 0;
+        int FlatWhite = 0;
+
         public Menu()
         {
             InitializeComponent();
             HotMenuPanel.Visible = false;
             ColdMenuPanel.Visible = false;
-
         }
-        private void CustomizeButton()
+
+        // Helper method to add/update drink in the OrderList
+        private void UpdateOrderList(string drinkName, ref int drinkCount)
         {
-            // Load an image into the button
+            drinkCount++;
 
-            esspressoBtn.BackgroundImage = Image.FromFile("Photos/Esspresso.jpg");
-            esspressoBtn.BackgroundImageLayout = ImageLayout.Zoom; // Or Stretch, Center, etc.
+            // Check if the drink is already in the OrderList
+            for (int i = 0; i < OrderList.Items.Count; i++)
+            {
+                string item = OrderList.Items[i].ToString();
+                if (item.StartsWith(drinkName, StringComparison.OrdinalIgnoreCase))
+                {
+                    // Update the existing item with the new count
+                    OrderList.Items[i] = $"{drinkName} {drinkCount}";
+                    return; // Exit after updating
+                }
+            }
 
-
-            // Adjust image layout
-            esspressoBtn.BackgroundImageLayout = ImageLayout.Zoom;
-
-            // Remove text and border
-            esspressoBtn.Text = ""; // No text
-            esspressoBtn.FlatStyle = FlatStyle.Flat;
-            esspressoBtn.FlatAppearance.BorderSize = 0;
+            // If not found, add it as a new item
+            OrderList.Items.Add($"{drinkName} {drinkCount}");
         }
 
+        // Button click events
+        private void esspressoBtn_Click(object sender, EventArgs e)
+        {
+            UpdateOrderList("Espresso", ref Esspresso);
+        }
 
+        private void latteBtn_Click(object sender, EventArgs e)
+        {
+            UpdateOrderList("Latte", ref Latte);
+        }
+
+        private void macchiatoBtn_Click(object sender, EventArgs e)
+        {
+            UpdateOrderList("Macchiato", ref Macchiato);
+        }
+
+        private void capuchinoBtn_Click(object sender, EventArgs e)
+        {
+            UpdateOrderList("Cappuccino", ref Cappuccino);
+        }
+
+        private void americanoBtn_Click(object sender, EventArgs e)
+        {
+            UpdateOrderList("Americano", ref Americano);
+        }
+
+        private void mochaBtn_Click(object sender, EventArgs e)
+        {
+            UpdateOrderList("Mocha", ref Mocha);
+        }
+
+        private void whiteMochaBtn_Click(object sender, EventArgs e)
+        {
+            UpdateOrderList("White Mocha", ref WhiteMocha);
+        }
+
+        private void brewedBtn_Click(object sender, EventArgs e)
+        {
+            UpdateOrderList("Brewed", ref Brewed);
+        }
+
+        private void flatwhiteBtn_Click(object sender, EventArgs e)
+        {
+            UpdateOrderList("Flat White", ref FlatWhite);
+        }
+
+        // Other methods remain unchanged
         private void HotBtn_Click(object sender, EventArgs e)
         {
-            //HotOrCold.Visible = false;
-            //HotBtn.Visible = false;
-            //ColdBtn.Visible = false;
             HotMenuPanel.Visible = true;
             ColdMenuPanel.Visible = false;
         }
 
         private void ColdBtn_Click(object sender, EventArgs e)
         {
-            //HotBtn.Visible = false;
-            //ColdBtn.Visible = false;
             ColdMenuPanel.Visible = true;
             HotMenuPanel.Visible = false;
         }
 
-        private void toolStripContainer1_ContentPanel_Load(object sender, EventArgs e)
+        private void Menu_Load(object sender, EventArgs e) { }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void Menu_Load(object sender, EventArgs e)
+        private void DoneBtn_Click(object sender, EventArgs e)
         {
-
-
-        }
-
-        private void ColdMenu_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        int count = 0;
-        int Esspresso = 0;
-        int Latte = 0;
-        int Machiato = 0;
-
-        private void esspressoBtn_Click(object sender, EventArgs e)
-        {
-            {
-                Esspresso++;
-
-                // Check if "Espresso" is already in the OrderList
-                for (int i = 0; i < OrderList.Items.Count; i++)
-                {
-                    string item = OrderList.Items[i].ToString();
-                    if (item.StartsWith("espresso")) // Check if the item starts with "espresso"
-                    {
-                        // Update the existing item with the new count
-                        OrderList.Items[i] = $"espresso {Esspresso}";
-                        return; // Exit after updating
-                    }
-                }
-
-                // If not found, add it as a new item
-                OrderList.Items.Add($"espresso {Esspresso}");
-            }
+            this.Close();
         }
     }
 }

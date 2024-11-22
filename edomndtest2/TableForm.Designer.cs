@@ -98,6 +98,7 @@
             DoneBtn.TabIndex = 0;
             DoneBtn.Text = "Done";
             DoneBtn.UseVisualStyleBackColor = true;
+            DoneBtn.Click += DoneBtn_Click;
             // 
             // listBox1
             // 

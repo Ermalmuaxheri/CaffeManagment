@@ -118,14 +118,17 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Mocha1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Photos\Mocha.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Latte1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Photos\Latte.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="capuchino" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Photos\capuchino.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Brewed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Photos\Brewed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Latte" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Photos\Latte.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="pngtree-americano-coffee-beans-transparent-white-background-png-image_6698453" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Photos\pngtree-americano-coffee-beans-transparent-white-background-png-image_6698453.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Mocha" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Photos\Mocha.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -133,20 +136,8 @@
   <data name="Esspresso" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Photos\Esspresso.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Brewed" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Photos\Brewed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="capuchino" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Photos\capuchino.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Esspresso1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Photos\Esspresso.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FlatWhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Photos\FlatWhite.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Latte1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Photos\Latte.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pngtree-americano-coffee-beans-transparent-white-background-png-image_66984531" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Photos\pngtree-americano-coffee-beans-transparent-white-background-png-image_6698453.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Machiato" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Photos\Machiato.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -154,7 +145,19 @@
   <data name="Mocha2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Photos\Mocha.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pngtree-americano-coffee-beans-transparent-white-background-png-image_66984531" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="Esspresso1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Photos\Esspresso.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pngtree-americano-coffee-beans-transparent-white-background-png-image_6698453" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Photos\pngtree-americano-coffee-beans-transparent-white-background-png-image_6698453.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FlatWhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Photos\FlatWhite.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Mocha1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Photos\Mocha.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="White Mocha" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Photos\White Mocha.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

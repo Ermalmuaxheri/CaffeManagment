@@ -29,5 +29,10 @@ namespace edomndtest2
             // Show the form
             MenuForm.Show();
         }
+
+        private void DoneBtn_Click(object sender, EventArgs e)
+        {
+           this.Close();
+        }
     }
 }

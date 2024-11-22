@@ -24,27 +24,27 @@ namespace edomndtest2
 
         private void Table2_Click(object sender, EventArgs e)
         {
-
+            OpenTableForm();
         }
 
         private void Table3_Click(object sender, EventArgs e)
         {
-
+            OpenTableForm();
         }
 
         private void Table4_Click(object sender, EventArgs e)
         {
-
+            OpenTableForm();
         }
 
         private void Table6_Click(object sender, EventArgs e)
         {
-
+            OpenTableForm();
         }
 
         private void Table5_Click(object sender, EventArgs e)
         {
-
+            OpenTableForm();
         }
         private void OpenTableForm()
         {
