@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Text.Json;
 
 namespace edomndtest2
 {
@@ -19,11 +22,59 @@ namespace edomndtest2
         public Menu()
         {
             InitializeComponent();
+
+            // Initialize visibility for panels
             HotMenuPanel.Visible = false;
             ColdMenuPanel.Visible = false;
+
+            // Add "Fetch Data" button programmatically
+            Button fetchDataBtn = new Button
+            {
+                Name = "fetchDataBtn",
+                Text = "Fetch Data",
+                Location = new System.Drawing.Point(10, 10), // Adjust position as needed
+                Size = new System.Drawing.Size(100, 30)     // Adjust size as needed
+            };
+
+            fetchDataBtn.Click += fetchDataBtn_Click; // Attach event handler
+            this.Controls.Add(fetchDataBtn);         // Add button to the form
         }
 
-        // Helper method to add/update drink in the OrderList
+        private async Task CallApiAsync()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    string url = "https://localhost:7101/api/OI/GetAllOI";
+
+                    HttpResponseMessage response = await client.GetAsync(url);
+
+                    // Ensure the response is successful
+                    response.EnsureSuccessStatusCode();
+
+                    // Read the response content
+                    string responseData = await response.Content.ReadAsStringAsync();
+
+                    // Parse JSON (optional)
+                    var data = JsonSerializer.Deserialize<dynamic>(responseData);
+
+                    // Show success message
+                    MessageBox.Show("Data fetched successfully!");
+                }
+                catch (Exception ex)
+                {
+                    // Handle errors
+                    MessageBox.Show($"Error: {ex.Message}");
+                }
+            }
+        }
+
+        private async void fetchDataBtn_Click(object sender, EventArgs e)
+        {
+            await CallApiAsync();
+        }
+
         private void UpdateOrderList(string drinkName, ref int drinkCount)
         {
             drinkCount++;
@@ -90,7 +141,6 @@ namespace edomndtest2
             UpdateOrderList("Flat White", ref FlatWhite);
         }
 
-        // Other methods remain unchanged
         private void HotBtn_Click(object sender, EventArgs e)
         {
             HotMenuPanel.Visible = true;
@@ -105,19 +155,13 @@ namespace edomndtest2
 
         private void Menu_Load(object sender, EventArgs e) { }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void label1_Click(object sender, EventArgs e) { }
 
         private void DoneBtn_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void iceLatteBtn_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void iceLatteBtn_Click(object sender, EventArgs e) { }
     }
 }
