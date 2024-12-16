@@ -63,9 +63,9 @@ namespace edomndtest2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Brewed {
+        internal static System.Drawing.Bitmap americano {
             get {
-                object obj = ResourceManager.GetObject("Brewed", resourceCulture);
+                object obj = ResourceManager.GetObject("americano", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace edomndtest2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Brewed1 {
+        internal static System.Drawing.Bitmap brewed {
             get {
-                object obj = ResourceManager.GetObject("Brewed1", resourceCulture);
+                object obj = ResourceManager.GetObject("brewed", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,39 @@ namespace edomndtest2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap capuchino {
+        internal static System.Drawing.Bitmap cappuccino {
             get {
-                object obj = ResourceManager.GetObject("capuchino", resourceCulture);
+                object obj = ResourceManager.GetObject("cappuccino", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap caramel_frappe {
+            get {
+                object obj = ResourceManager.GetObject("caramel frappe", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap caramel_macchiato {
+            get {
+                object obj = ResourceManager.GetObject("caramel macchiato", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap choco_mocha {
+            get {
+                object obj = ResourceManager.GetObject("choco mocha", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +133,9 @@ namespace edomndtest2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Esspresso {
+        internal static System.Drawing.Bitmap espresso1 {
             get {
-                object obj = ResourceManager.GetObject("Esspresso", resourceCulture);
+                object obj = ResourceManager.GetObject("espresso1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +143,9 @@ namespace edomndtest2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Esspresso1 {
+        internal static System.Drawing.Bitmap fierda_high_resolution_logo {
             get {
-                object obj = ResourceManager.GetObject("Esspresso1", resourceCulture);
+                object obj = ResourceManager.GetObject("fierda-high-resolution-logo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +153,9 @@ namespace edomndtest2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap FlatWhite {
+        internal static System.Drawing.Bitmap fierda_high_resolution_logo_fotor_bg_remover_20241216204452 {
             get {
-                object obj = ResourceManager.GetObject("FlatWhite", resourceCulture);
+                object obj = ResourceManager.GetObject("fierda-high-resolution-logo-fotor-bg-remover-20241216204452", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +163,9 @@ namespace edomndtest2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Latte {
+        internal static System.Drawing.Bitmap ice_americanp {
             get {
-                object obj = ResourceManager.GetObject("Latte", resourceCulture);
+                object obj = ResourceManager.GetObject("ice americanp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +173,9 @@ namespace edomndtest2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Latte1 {
+        internal static System.Drawing.Bitmap ice_cappuccino {
             get {
-                object obj = ResourceManager.GetObject("Latte1", resourceCulture);
+                object obj = ResourceManager.GetObject("ice cappuccino", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +183,9 @@ namespace edomndtest2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Machiato {
+        internal static System.Drawing.Bitmap ice_caramel_macchiato {
             get {
-                object obj = ResourceManager.GetObject("Machiato", resourceCulture);
+                object obj = ResourceManager.GetObject("ice caramel macchiato", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +193,9 @@ namespace edomndtest2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Mocha {
+        internal static System.Drawing.Bitmap ice_choco {
             get {
-                object obj = ResourceManager.GetObject("Mocha", resourceCulture);
+                object obj = ResourceManager.GetObject("ice choco", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,9 +203,9 @@ namespace edomndtest2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Mocha1 {
+        internal static System.Drawing.Bitmap ice_latte {
             get {
-                object obj = ResourceManager.GetObject("Mocha1", resourceCulture);
+                object obj = ResourceManager.GetObject("ice latte", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,9 +213,9 @@ namespace edomndtest2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Mocha2 {
+        internal static System.Drawing.Bitmap ice_matcha_espresso {
             get {
-                object obj = ResourceManager.GetObject("Mocha2", resourceCulture);
+                object obj = ResourceManager.GetObject("ice matcha espresso", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,9 +223,9 @@ namespace edomndtest2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap pngtree_americano_coffee_beans_transparent_white_background_png_image_6698453 {
+        internal static System.Drawing.Bitmap ice_white_choco_mocha {
             get {
-                object obj = ResourceManager.GetObject("pngtree-americano-coffee-beans-transparent-white-background-png-image_6698453", resourceCulture);
+                object obj = ResourceManager.GetObject("ice white choco mocha", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -203,9 +233,9 @@ namespace edomndtest2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap pngtree_americano_coffee_beans_transparent_white_background_png_image_66984531 {
+        internal static System.Drawing.Bitmap latteeeee {
             get {
-                object obj = ResourceManager.GetObject("pngtree-americano-coffee-beans-transparent-white-background-png-image_66984531", resourceCulture);
+                object obj = ResourceManager.GetObject("latteeeee", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -213,9 +243,29 @@ namespace edomndtest2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap White_Mocha {
+        internal static System.Drawing.Bitmap vanilla_cream_cold_brew {
             get {
-                object obj = ResourceManager.GetObject("White Mocha", resourceCulture);
+                object obj = ResourceManager.GetObject("vanilla cream cold brew", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap white_mocha {
+            get {
+                object obj = ResourceManager.GetObject("white mocha", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ZgRS__ls {
+            get {
+                object obj = ResourceManager.GetObject("ZgRS-_ls", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
