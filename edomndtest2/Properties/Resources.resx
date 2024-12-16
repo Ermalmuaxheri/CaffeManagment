@@ -121,9 +121,6 @@
   <data name="caramel macchiato" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\caramel macchiato.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="fierda-high-resolution-logo (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\fierda-high-resolution-logo (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="espresso1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\espresso1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -172,19 +169,10 @@
   <data name="caramel frappe" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\caramel frappe.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="fierda-high-resolution-logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\fierda-high-resolution-logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="cappuccino" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\cappuccino.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ice choco" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\ice choco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="fierda-high-resolution-logo-fotor-bg-remover-20241216204452" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\fierda-high-resolution-logo-fotor-bg-remover-20241216204452.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="fierda-high-resolution-logo (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\fierda-high-resolution-logo (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

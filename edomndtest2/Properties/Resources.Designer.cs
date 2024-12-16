@@ -143,26 +143,6 @@ namespace edomndtest2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap fierda_high_resolution_logo {
-            get {
-                object obj = ResourceManager.GetObject("fierda-high-resolution-logo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap fierda_high_resolution_logo_fotor_bg_remover_20241216204452 {
-            get {
-                object obj = ResourceManager.GetObject("fierda-high-resolution-logo-fotor-bg-remover-20241216204452", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap ice_americanp {
             get {
                 object obj = ResourceManager.GetObject("ice americanp", resourceCulture);

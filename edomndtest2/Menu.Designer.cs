@@ -182,7 +182,6 @@
             // esspressoBtn
             // 
             esspressoBtn.BackColor = Color.White;
-            esspressoBtn.BackgroundImage = Properties.Resources.Esspresso;
             esspressoBtn.BackgroundImageLayout = ImageLayout.Zoom;
             esspressoBtn.Font = new Font("Segoe UI", 12F);
             esspressoBtn.ForeColor = SystemColors.ControlText;
@@ -215,7 +214,6 @@
             // 
             // capuchinoBtn
             // 
-            capuchinoBtn.BackgroundImage = Properties.Resources.capuchino;
             capuchinoBtn.BackgroundImageLayout = ImageLayout.Zoom;
             capuchinoBtn.Font = new Font("Segoe UI", 12F);
             capuchinoBtn.Location = new Point(251, 3);
@@ -229,7 +227,6 @@
             // 
             // macchiatoBtn
             // 
-            macchiatoBtn.BackgroundImage = Properties.Resources.Machiato;
             macchiatoBtn.BackgroundImageLayout = ImageLayout.Zoom;
             macchiatoBtn.Font = new Font("Segoe UI", 12F);
             macchiatoBtn.Location = new Point(3, 159);
@@ -243,7 +240,6 @@
             // 
             // americanoBtn
             // 
-            americanoBtn.BackgroundImage = Properties.Resources.pngtree_americano_coffee_beans_transparent_white_background_png_image_6698453;
             americanoBtn.BackgroundImageLayout = ImageLayout.Zoom;
             americanoBtn.Font = new Font("Segoe UI", 12F);
             americanoBtn.Location = new Point(128, 159);
@@ -257,7 +253,6 @@
             // 
             // brewedBtn
             // 
-            brewedBtn.BackgroundImage = Properties.Resources.Brewed;
             brewedBtn.BackgroundImageLayout = ImageLayout.Zoom;
             brewedBtn.Font = new Font("Segoe UI", 12F);
             brewedBtn.Location = new Point(253, 159);
@@ -271,7 +266,6 @@
             // 
             // flatwhiteBtn
             // 
-            flatwhiteBtn.BackgroundImage = Properties.Resources.FlatWhite;
             flatwhiteBtn.BackgroundImageLayout = ImageLayout.Stretch;
             flatwhiteBtn.Font = new Font("Segoe UI", 12F);
             flatwhiteBtn.Location = new Point(3, 315);
@@ -285,7 +279,6 @@
             // 
             // mochaBtn
             // 
-            mochaBtn.BackgroundImage = Properties.Resources.Mocha1;
             mochaBtn.BackgroundImageLayout = ImageLayout.Stretch;
             mochaBtn.Font = new Font("Segoe UI", 12F);
             mochaBtn.Location = new Point(128, 315);
@@ -299,7 +292,6 @@
             // 
             // whiteMochaBtn
             // 
-            whiteMochaBtn.BackgroundImage = Properties.Resources.White_Mocha;
             whiteMochaBtn.BackgroundImageLayout = ImageLayout.Stretch;
             whiteMochaBtn.Font = new Font("Segoe UI", 12F);
             whiteMochaBtn.Location = new Point(253, 315);
@@ -338,7 +330,6 @@
             // 
             // iceLatteBtn
             // 
-            iceLatteBtn.BackgroundImage = Properties.Resources.Brewed1;
             iceLatteBtn.BackgroundImageLayout = ImageLayout.Zoom;
             iceLatteBtn.Font = new Font("Segoe UI", 12F);
             iceLatteBtn.Location = new Point(3, 3);
