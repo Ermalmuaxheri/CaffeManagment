@@ -121,6 +121,9 @@
   <data name="Latte1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Photos\Latte.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Brewed1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Photos\Brewed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="capuchino" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Photos\capuchino.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -145,6 +148,9 @@
   <data name="Machiato" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Photos\Machiato.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="espresso" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\espresso.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="pngtree-americano-coffee-beans-transparent-white-background-png-image_6698453" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Photos\pngtree-americano-coffee-beans-transparent-white-background-png-image_6698453.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -160,7 +166,7 @@
   <data name="Esspresso1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Photos\Esspresso.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Brewed1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Photos\Brewed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="latte" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\latte.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
