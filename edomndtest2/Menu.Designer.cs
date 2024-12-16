@@ -33,6 +33,7 @@
             HotOrCold = new Panel();
             DoneBtn = new Button();
             panel1 = new Panel();
+            fetchDataBtn = new Button();
             OrderList = new ListBox();
             label1 = new Label();
             HotMenuPanel = new Panel();
@@ -57,7 +58,6 @@
             button16 = new Button();
             button17 = new Button();
             button18 = new Button();
-            helpProvider1 = new HelpProvider();
             HotOrCold.SuspendLayout();
             panel1.SuspendLayout();
             HotMenuPanel.SuspendLayout();
@@ -97,7 +97,7 @@
             HotOrCold.Dock = DockStyle.Fill;
             HotOrCold.Location = new Point(0, 0);
             HotOrCold.Name = "HotOrCold";
-            HotOrCold.Size = new Size(1142, 533);
+            HotOrCold.Size = new Size(1038, 492);
             HotOrCold.TabIndex = 2;
             // 
             // DoneBtn
@@ -115,6 +115,7 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.ActiveCaption;
+            panel1.Controls.Add(fetchDataBtn);
             panel1.Controls.Add(OrderList);
             panel1.Controls.Add(label1);
             panel1.ForeColor = SystemColors.ControlLightLight;
@@ -122,6 +123,16 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(264, 274);
             panel1.TabIndex = 4;
+            // 
+            // fetchDataBtn
+            // 
+            fetchDataBtn.Location = new Point(143, 18);
+            fetchDataBtn.Name = "fetchDataBtn";
+            fetchDataBtn.Size = new Size(75, 23);
+            fetchDataBtn.TabIndex = 2;
+            fetchDataBtn.Text = "fetch Api";
+            fetchDataBtn.UseVisualStyleBackColor = true;
+            fetchDataBtn.Click += fetchDataBtn_Click;
             // 
             // OrderList
             // 
@@ -189,7 +200,7 @@
             // 
             // latteBtn
             // 
-            latteBtn.BackgroundImage = Properties.Resources.Latte;
+            latteBtn.BackgroundImage = Properties.Resources.ice_cappuccino;
             latteBtn.BackgroundImageLayout = ImageLayout.Zoom;
             latteBtn.Font = new Font("Segoe UI", 12F);
             latteBtn.ImageAlign = ContentAlignment.BottomCenter;
@@ -303,7 +314,7 @@
             // ColdMenuPanel
             // 
             ColdMenuPanel.Controls.Add(ColdMenuFlow);
-            ColdMenuPanel.Location = new Point(755, 24);
+            ColdMenuPanel.Location = new Point(352, 19);
             ColdMenuPanel.Name = "ColdMenuPanel";
             ColdMenuPanel.Size = new Size(384, 471);
             ColdMenuPanel.TabIndex = 3;
@@ -439,7 +450,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1142, 533);
+            ClientSize = new Size(1038, 492);
             Controls.Add(HotOrCold);
             Name = "Menu";
             Text = "Menu";
@@ -459,7 +470,6 @@
         private Button HotBtn;
         private Button ColdBtn;
         private Panel HotOrCold;
-        private HelpProvider helpProvider1;
         private Panel HotMenuPanel;
         private Panel ColdMenuPanel;
         private FlowLayoutPanel HotMenuFlow;
@@ -486,5 +496,6 @@
         private Button button17;
         private Button button18;
         private Button DoneBtn;
+        private Button fetchDataBtn;
     }
 }
