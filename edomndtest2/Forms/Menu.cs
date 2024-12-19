@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Text.Json;
+using edomndtest2.APIs;
 
 namespace edomndtest2
 {
@@ -36,44 +37,57 @@ namespace edomndtest2
                 Size = new System.Drawing.Size(100, 30)     // Adjust size as needed
             };
 
-            fetchDataBtn.Click += fetchDataBtn_Click; // Attach event handler
-            this.Controls.Add(fetchDataBtn);         // Add button to the form
+            //fetchDataBtn.Click += fetchDataBtn_Click; // Attach event handler
+            //this.Controls.Add(fetchDataBtn);         // Add button to the form
         }
 
-        private async Task CallApiAsync()
+
+
+
+        private async void fetchDataBtn_Click(object sender, EventArgs e)
         {
-            using (HttpClient client = new HttpClient())
+            // Map drink names to their IDs
+            var drinkIdMap = new Dictionary<string, int>
+    {
+        { "Espresso", 1 },
+        { "Latte", 2 },
+        { "Macchiato", 3 },
+        { "Cappuccino", 4 },
+        { "Americano", 5 },
+        { "Mocha", 6 },
+        { "White Mocha", 7 },
+        { "Brewed", 8 },
+        { "Flat White", 9 }
+    };
+
+            // Iterate through the OrderList to get the drinks and quantities
+            foreach (var item in OrderList.Items)
             {
-                try
+                // Split the string to extract the drink name and quantity
+                var parts = item.ToString().Split(' ');
+                if (parts.Length < 2) continue;
+
+                string drinkName = parts[0];
+                if (int.TryParse(parts[1], out int quantity) && quantity > 0)
                 {
-                    string url = "https://localhost:7101/api/OI/GetAllOI";
-
-                    HttpResponseMessage response = await client.GetAsync(url);
-
-                    // Ensure the response is successful
-                    response.EnsureSuccessStatusCode();
-
-                    // Read the response content
-                    string responseData = await response.Content.ReadAsStringAsync();
-
-                    // Parse JSON (optional)
-                    var data = JsonSerializer.Deserialize<dynamic>(responseData);
-
-                    // Show success message
-                    MessageBox.Show("Data fetched successfully!");
+                    if (drinkIdMap.TryGetValue(drinkName, out int drinkId))
+                    {
+                        // Make the API call for each drink
+                        string result = await ApiOrderItem.AddItemsAsync(9, drinkId, quantity); // Replace '1' with the actual OrderId
+                        MessageBox.Show($"Order for {drinkName} ({quantity}) was processed: {result}");
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Unknown drink: {drinkName}");
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    // Handle errors
-                    MessageBox.Show($"Error: {ex.Message}");
+                    MessageBox.Show($"Invalid quantity for item: {item}");
                 }
             }
         }
 
-        private async void fetchDataBtn_Click(object sender, EventArgs e)
-        {
-            await CallApiAsync();
-        }
 
         private void UpdateOrderList(string drinkName, ref int drinkCount)
         {

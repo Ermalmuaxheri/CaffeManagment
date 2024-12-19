@@ -34,6 +34,8 @@
             AddCoffeBtn = new Button();
             DoneBtn = new Button();
             listBox1 = new ListBox();
+            checkoutBtn = new Button();
+            listBox2 = new ListBox();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -50,13 +52,15 @@
             // splitContainer1.Panel1
             // 
             splitContainer1.Panel1.BackColor = SystemColors.ActiveCaption;
+            splitContainer1.Panel1.Controls.Add(checkoutBtn);
             splitContainer1.Panel1.Controls.Add(VoidBtn);
-            splitContainer1.Panel1.Controls.Add(DiscountBtn);
             splitContainer1.Panel1.Controls.Add(AddCoffeBtn);
+            splitContainer1.Panel1.Controls.Add(DiscountBtn);
             splitContainer1.Panel1.Controls.Add(DoneBtn);
             // 
             // splitContainer1.Panel2
             // 
+            splitContainer1.Panel2.Controls.Add(listBox2);
             splitContainer1.Panel2.Controls.Add(listBox1);
             splitContainer1.Size = new Size(673, 531);
             splitContainer1.SplitterDistance = 100;
@@ -82,9 +86,9 @@
             // 
             // AddCoffeBtn
             // 
-            AddCoffeBtn.Location = new Point(328, 3);
+            AddCoffeBtn.Location = new Point(202, 1);
             AddCoffeBtn.Name = "AddCoffeBtn";
-            AddCoffeBtn.Size = new Size(187, 97);
+            AddCoffeBtn.Size = new Size(137, 97);
             AddCoffeBtn.TabIndex = 0;
             AddCoffeBtn.Text = "Add To Order";
             AddCoffeBtn.UseVisualStyleBackColor = true;
@@ -92,9 +96,9 @@
             // 
             // DoneBtn
             // 
-            DoneBtn.Location = new Point(135, 3);
+            DoneBtn.Location = new Point(30, 1);
             DoneBtn.Name = "DoneBtn";
-            DoneBtn.Size = new Size(187, 97);
+            DoneBtn.Size = new Size(137, 97);
             DoneBtn.TabIndex = 0;
             DoneBtn.Text = "Done";
             DoneBtn.UseVisualStyleBackColor = true;
@@ -109,6 +113,26 @@
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(673, 427);
             listBox1.TabIndex = 0;
+            // 
+            // checkoutBtn
+            // 
+            checkoutBtn.Location = new Point(372, 1);
+            checkoutBtn.Name = "checkoutBtn";
+            checkoutBtn.Size = new Size(137, 97);
+            checkoutBtn.TabIndex = 1;
+            checkoutBtn.Text = "Checkout";
+            checkoutBtn.UseVisualStyleBackColor = true;
+            checkoutBtn.Click += checkoutBtn_Click;
+            // 
+            // listBox2
+            // 
+            listBox2.Dock = DockStyle.Fill;
+            listBox2.FormattingEnabled = true;
+            listBox2.ItemHeight = 15;
+            listBox2.Location = new Point(0, 0);
+            listBox2.Name = "listBox2";
+            listBox2.Size = new Size(673, 427);
+            listBox2.TabIndex = 2;
             // 
             // TableForm
             // 
@@ -133,5 +157,7 @@
         private Button DiscountBtn;
         private Button AddCoffeBtn;
         private ListBox listBox1;
+        private Button checkoutBtn;
+        private ListBox listBox2;
     }
 }
