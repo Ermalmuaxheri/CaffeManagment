@@ -2,7 +2,9 @@
 using System;
 using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace edomndtest2.APIs
 {
@@ -74,29 +76,36 @@ namespace edomndtest2.APIs
             }
         }
 
-        // Update an order's status (e.g., to "Completed")
-        public static async Task<string> UpdateOrderStatusAsync(int orderId, string status)
+        public static async Task<string> GetLastOpenOrderAsync(int tableId)
         {
             try
             {
-                string url = $"https://your-api-endpoint.com/api/orders/{orderId}/status";
-                var content = new StringContent($"{{\"status\":\"{status}\"}}", System.Text.Encoding.UTF8, "application/json");
+                string url = $"https://localhost:7101/api/Order/GetOrderByTableId?tableId={tableId}";
+                HttpResponseMessage response = await client.GetAsync(url);
 
-                HttpResponseMessage response = await client.PutAsync(url, content);
+                // Ensure the response is successful
+                response.EnsureSuccessStatusCode();
 
-                if (response.IsSuccessStatusCode)
-                {
-                    return "Order status updated successfully!";
-                }
-                else
-                {
-                    return "Error updating the order status.";
-                }
+                // Read the response content
+                string responseData = await response.Content.ReadAsStringAsync();
+
+                // Parse JSON and extract relevant data
+                var jsonDocument = JsonDocument.Parse(responseData);
+                var data = jsonDocument.RootElement.GetProperty("data");
+
+                // Assuming the table JSON structure has properties like tableId and status
+                string status = data.TryGetProperty("status", out var statusProp) ? statusProp.GetString() : "Unknown";
+                int orderId = data.TryGetProperty("id", out var orderIdProp) ? orderIdProp.GetInt32() : -1;
+
+                // Return the extracted table information
+                return $"Table ID: {orderId}, Status: {status}";
             }
             catch (Exception ex)
             {
-                return $"An error occurred: {ex.Message}";
+                // Handle errors
+                return $"Error: {ex.Message}";
             }
         }
+
     }
 }

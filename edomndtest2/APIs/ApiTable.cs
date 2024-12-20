@@ -86,13 +86,11 @@ namespace edomndtest2.APIs
                 return $"Error: {ex.Message}";
             }
         }
-        public static async Task<string> GetTableInfoAsync(int tableId)
+        public static async Task<string> GetLastOpenOrderAsync(int tableId)
         {
             try
             {
-                // Use the provided tableId in the API URL
-                string url = $"https://localhost:7101/api/Tables/{tableId}";
-
+                string url = $"https://localhost:7101/api/Order/GetOrderByTableId?tableId={tableId}";
                 HttpResponseMessage response = await client.GetAsync(url);
 
                 // Ensure the response is successful
@@ -103,14 +101,23 @@ namespace edomndtest2.APIs
 
                 // Parse JSON and extract relevant data
                 var jsonDocument = JsonDocument.Parse(responseData);
-                var data = jsonDocument.RootElement.GetProperty("data");
+                var root = jsonDocument.RootElement;
 
-                // Assuming the table JSON structure has properties like tableId and status
-                string status = data.TryGetProperty("status", out var statusProp) ? statusProp.GetString() : "Unknown";
-                int tableNumber = data.TryGetProperty("tableNumber", out var tableNumberProp) ? tableNumberProp.GetInt32() : -1;
+                // Check if "data" is an array
+                if (root.TryGetProperty("data", out var dataElement) && dataElement.ValueKind == JsonValueKind.Array)
+                {
+                    // Loop through all orders or just process the first one
+                    var firstOrder = dataElement[0]; // Assuming we care about the first order
 
-                // Return the extracted table information
-                return $"Table ID: {tableNumber}, Status: {status}";
+                    int orderId = firstOrder.GetProperty("id").GetInt32();
+                    int tableIdFromResponse = firstOrder.GetProperty("tableId").GetInt32();
+                    string status = firstOrder.GetProperty("status").GetString();
+                    string time = firstOrder.GetProperty("time").GetString();
+
+                    return $"Order ID: {orderId}, Table ID: {tableIdFromResponse}, Status: {status}, Time: {time}";
+                }
+
+                return "No orders found.";
             }
             catch (Exception ex)
             {
@@ -118,6 +125,7 @@ namespace edomndtest2.APIs
                 return $"Error: {ex.Message}";
             }
         }
+
 
 
         // Update an order's status (e.g., to "Completed")
