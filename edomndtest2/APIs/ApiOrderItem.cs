@@ -1,8 +1,5 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace edomndtest2.APIs
 {
@@ -11,20 +8,18 @@ namespace edomndtest2.APIs
         private static readonly HttpClient client = new HttpClient();  // Shared HttpClient instance
 
         // Place an order (e.g., coffee)
-        public static async Task<string> AddItemsAsync(int OrderId, int itemId, int quantity)
+        public static async Task<string> AddItemsAsync(int OrderId, int ItemId, int Quantity)
         {
             try
             {
                 string url = "https://localhost:7101/api/OI/CreateOI";
                 var orderData = new
                 {
-                    OrderId = OrderId,
-                    itemId = itemId,
-                    quantity = quantity
-                    // status, time, createdAt, and updatedAt will be handled by the backend
+                    orderId = OrderId,
+                    itemId = ItemId,
+                    quantity = Quantity
                 };
 
-                // Serialize the object to JSON
                 string jsonContent = JsonConvert.SerializeObject(orderData);
 
                 // Create the HTTP content with the JSON string
@@ -36,11 +31,14 @@ namespace edomndtest2.APIs
                 // Handle success or failure
                 if (response.IsSuccessStatusCode)
                 {
+                    // If you don't want to return the response data, you can just return a success message
                     return "Order placed successfully!";
                 }
                 else
                 {
-                    return "Error placing the order.";
+                    // Optionally log the error details if needed for debugging
+                    string errorResponse = await response.Content.ReadAsStringAsync();
+                    return $"Error placing the order. Response: {errorResponse}";
                 }
             }
             catch (Exception ex)

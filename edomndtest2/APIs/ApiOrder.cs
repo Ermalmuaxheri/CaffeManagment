@@ -50,6 +50,7 @@ namespace edomndtest2.APIs
         }
 
 
+
         // Get a list of available menu items
         public static async Task<string> GetAllAsync()
         {
@@ -72,6 +73,29 @@ namespace edomndtest2.APIs
             {
                 return $"An error occurred: {ex.Message}";
             }
+        }
+
+
+        //Getting open order based on table id
+        public static async Task<int> GetOpenOrderId(int tableId)
+        {
+            string url = $"https://localhost:7101/api/Order/GetOrderByTableId?tableId={tableId}";
+            HttpResponseMessage response = await new HttpClient().GetAsync(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string result = await response.Content.ReadAsStringAsync();
+
+                // Deserialize the response into an object containing a list of orders
+                var jsonResponse = JsonConvert.DeserializeObject<ResponseWrapper>(result);
+
+                if (jsonResponse != null && jsonResponse.Data != null && jsonResponse.Data.Count > 0)
+                {
+                    return jsonResponse.Data[0].Id; // Return the orderId of the first order
+                }
+            }
+
+            return 0;
         }
 
         // Update an order's status (e.g., to "Completed")
@@ -97,6 +121,23 @@ namespace edomndtest2.APIs
             {
                 return $"An error occurred: {ex.Message}";
             }
+        }
+
+
+
+        //Defining classes for the responses
+        public class ResponseWrapper
+        {
+            [JsonProperty("data")]
+            public List<Order> Data { get; set; } = new List<Order>();
+        }
+        public class Order
+        {
+            public int Id { get; set; }
+            public int TableId { get; set; }
+            public int UserId { get; set; }
+            public string Status { get; set; } = string.Empty;
+            public string Time { get; set; } = string.Empty;
         }
     }
 }
