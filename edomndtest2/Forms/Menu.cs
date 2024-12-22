@@ -4,178 +4,174 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Text.Json;
 using edomndtest2.APIs;
+using System.Diagnostics;
 
 namespace edomndtest2
 {
     public partial class Menu : Form
     {
-        // Counters for each drink
-        int Esspresso = 0;
-        int Latte = 0;
-        int Macchiato = 0;
-        int Cappuccino = 0;
-        int Americano = 0;
-        int Mocha = 0;
-        int WhiteMocha = 0;
-        int Brewed = 0;
-        int FlatWhite = 0;
+        private readonly HttpClient _httpClient;
+        private readonly ApiItems _apiItems;
 
-        public Menu()
+        private int tableId;
+
+        public Menu(int tableId)
         {
             InitializeComponent();
-
-            // Initialize visibility for panels
-            HotMenuPanel.Visible = false;
-            ColdMenuPanel.Visible = false;
-
-            // Add "Fetch Data" button programmatically
-            Button fetchDataBtn = new Button
-            {
-                Name = "fetchDataBtn",
-                Text = "Fetch Data",
-                Location = new System.Drawing.Point(10, 10), // Adjust position as needed
-                Size = new System.Drawing.Size(100, 30)     // Adjust size as needed
-            };
-
-            //fetchDataBtn.Click += fetchDataBtn_Click; // Attach event handler
-            //this.Controls.Add(fetchDataBtn);         // Add button to the form
+            _httpClient = new HttpClient();
+            _apiItems = new ApiItems(_httpClient);
+            this.tableId = tableId;
         }
 
-
-
-
-        private async void fetchDataBtn_Click(object sender, EventArgs e)
+        private async void HotBtn_Click(object sender, EventArgs e)
         {
-            // Map drink names to their IDs
-            var drinkIdMap = new Dictionary<string, int>
-    {
-        { "Espresso", 1 },
-        { "Latte", 2 },
-        { "Macchiato", 3 },
-        { "Cappuccino", 4 },
-        { "Americano", 5 },
-        { "Mocha", 6 },
-        { "White Mocha", 7 },
-        { "Brewed", 8 },
-        { "Flat White", 9 }
-    };
+            await FilterItemsByCategory(4);
+        }
 
-            // Iterate through the OrderList to get the drinks and quantities
-            foreach (var item in OrderList.Items)
+        private async void ColdBtn_Click(object sender, EventArgs e)
+        {
+            await FilterItemsByCategory(1);
+        }
+
+        private async Task FilterItemsByCategory(int categoryId)
+        {
+            var url = "https://localhost:7101/api/Item/GetAllItems";
+
+            try
             {
-                // Split the string to extract the drink name and quantity
-                var parts = item.ToString().Split(' ');
-                if (parts.Length < 2) continue;
+                var allItems = await _apiItems.FetchAllItems(url);
 
-                string drinkName = parts[0];
-                if (int.TryParse(parts[1], out int quantity) && quantity > 0)
+                var filteredItems = allItems.Where(item => item.CategoryId == categoryId).ToList();
+
+                itemPanel.Controls.Clear();
+
+                foreach (var item in filteredItems)
                 {
-                    if (drinkIdMap.TryGetValue(drinkName, out int drinkId))
+                    Button itemButton = new Button
                     {
-                        // Make the API call for each drink
-                        string result = await ApiOrderItem.AddItemsAsync(9, drinkId, quantity); // Replace '1' with the actual OrderId
-                        MessageBox.Show($"Order for {drinkName} ({quantity}) was processed: {result}");
-                    }
-                    else
+                        Text = item.Name,
+                        Tag = item.Id,
+                        Width = 300,
+                        Height = 200,
+                        TextAlign = ContentAlignment.BottomCenter,
+                        TextImageRelation = TextImageRelation.ImageAboveText,
+                        ImageAlign = ContentAlignment.MiddleCenter,
+                    };
+
+                    try
                     {
-                        MessageBox.Show($"Unknown drink: {drinkName}");
+                        var imagePath = $"Images/{item.Image}";
+                        Image originalImage = Image.FromFile(imagePath);
+
+                        Image resizedImage = ResizeImage(originalImage, itemButton.Width, itemButton.Height);
+                        itemButton.Image = resizedImage;
                     }
+                    catch (Exception)
+                    {
+                        Image defaultImage = Image.FromFile("Images/default.jpg");
+                        Image resizedImage = ResizeImage(defaultImage, itemButton.Width, itemButton.Height);
+                        itemButton.Image = resizedImage;
+                    }
+
+                    itemButton.Click += (s, args) =>
+                    {
+                        bool itemExists = false;
+
+                        for (int i = 0; i < OrderList.Items.Count; i++)
+                        {
+                            var currentItem = (ListBoxItem)OrderList.Items[i];
+                            if (currentItem.Name == item.Name)
+                            {
+                                currentItem.Quantity++;
+                                OrderList.Items[i] = currentItem;
+                                itemExists = true;
+                                break;
+                            }
+                        }
+
+                        if (!itemExists)
+                        {
+                            var listBoxItem = new ListBoxItem
+                            {
+                                Name = item.Name,
+                                Price = item.Price,
+                                Quantity = 1,
+                                Id = item.Id // Store the itemId here
+                            };
+
+                            OrderList.Items.Add(listBoxItem);
+                        }
+                    };
+
+                    itemPanel.Controls.Add(itemButton);
                 }
-                else
-                {
-                    MessageBox.Show($"Invalid quantity for item: {item}");
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error fetching data: {ex.Message}");
             }
         }
 
-
-        private void UpdateOrderList(string drinkName, ref int drinkCount)
+        //To resize the image of the items to fit the button
+        private Image ResizeImage(Image originalImage, int width, int height)
         {
-            drinkCount++;
-
-            // Check if the drink is already in the OrderList
-            for (int i = 0; i < OrderList.Items.Count; i++)
-            {
-                string item = OrderList.Items[i].ToString();
-                if (item.StartsWith(drinkName, StringComparison.OrdinalIgnoreCase))
-                {
-                    // Update the existing item with the new count
-                    OrderList.Items[i] = $"{drinkName} {drinkCount}";
-                    return; // Exit after updating
-                }
-            }
-
-            // If not found, add it as a new item
-            OrderList.Items.Add($"{drinkName} {drinkCount}");
-        }
-
-        // Button click events
-        private void esspressoBtn_Click(object sender, EventArgs e)
-        {
-            UpdateOrderList("Espresso", ref Esspresso);
-        }
-
-        private void latteBtn_Click(object sender, EventArgs e)
-        {
-            UpdateOrderList("Latte", ref Latte);
-        }
-
-        private void macchiatoBtn_Click(object sender, EventArgs e)
-        {
-            UpdateOrderList("Macchiato", ref Macchiato);
-        }
-
-        private void capuchinoBtn_Click(object sender, EventArgs e)
-        {
-            UpdateOrderList("Cappuccino", ref Cappuccino);
-        }
-
-        private void americanoBtn_Click(object sender, EventArgs e)
-        {
-            UpdateOrderList("Americano", ref Americano);
-        }
-
-        private void mochaBtn_Click(object sender, EventArgs e)
-        {
-            UpdateOrderList("Mocha", ref Mocha);
-        }
-
-        private void whiteMochaBtn_Click(object sender, EventArgs e)
-        {
-            UpdateOrderList("White Mocha", ref WhiteMocha);
-        }
-
-        private void brewedBtn_Click(object sender, EventArgs e)
-        {
-            UpdateOrderList("Brewed", ref Brewed);
-        }
-
-        private void flatwhiteBtn_Click(object sender, EventArgs e)
-        {
-            UpdateOrderList("Flat White", ref FlatWhite);
-        }
-
-        private void HotBtn_Click(object sender, EventArgs e)
-        {
-            HotMenuPanel.Visible = true;
-            ColdMenuPanel.Visible = false;
-        }
-
-        private void ColdBtn_Click(object sender, EventArgs e)
-        {
-            ColdMenuPanel.Visible = true;
-            HotMenuPanel.Visible = false;
+            Bitmap resizedBitmap = new Bitmap(originalImage, new Size(width, height));
+            return resizedBitmap;
         }
 
         private void Menu_Load(object sender, EventArgs e) { }
 
         private void label1_Click(object sender, EventArgs e) { }
 
-        private void DoneBtn_Click(object sender, EventArgs e)
+        private async void DoneBtn_Click(object sender, EventArgs e)
         {
-            this.Close();
+            try
+            {
+                // Fetch the orderId for the tableId with status "Open"
+                int orderId = await ApiOrder.GetOpenOrderId(tableId);
+
+                if (orderId == 0)
+                {
+                    MessageBox.Show("No open order found for this table.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Iterate through the items in the OrderList and send them to the API
+                foreach (var item in OrderList.Items)
+                {
+                    var orderItem = (ListBoxItem)item;
+
+                    // Add the item to the order using the API
+                    string response = await ApiOrderItem.AddItemsAsync(orderId, orderItem.Id, orderItem.Quantity);
+
+                    if (response != "Order placed successfully!")
+                    {
+                        MessageBox.Show($"Failed to add item: {orderItem.Name}. {response}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+                MessageBox.Show("All items added to the order successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Debug.WriteLine(ex.Message);
+            }
         }
 
-        private void iceLatteBtn_Click(object sender, EventArgs e) { }
+
+        //Displaying the items at the list box without the id
+        public class ListBoxItem
+        {
+            public string Name { get; set; } = string.Empty;
+            public decimal Price { get; set; }
+            public int Quantity { get; set; }
+            public int Id { get; set; }
+
+            public override string ToString()
+            {
+                return $"{Name} - ${Price:F2} x {Quantity}";
+            }
+        }
     }
 }

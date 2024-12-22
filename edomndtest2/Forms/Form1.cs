@@ -1,13 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
 namespace edomndtest2
 {
     public partial class Form1 : Form
@@ -26,32 +16,32 @@ namespace edomndtest2
         }
         private void Table1_Click(object sender, EventArgs e)
         {
-            OpenTableForm(1003);
+            OpenTableForm(1);
         }
 
         private void Table2_Click(object sender, EventArgs e)
         {
-            OpenTableForm(1004);
+            OpenTableForm(2);
         }
 
         private void Table3_Click(object sender, EventArgs e)
         {
-            OpenTableForm(1005);
+            OpenTableForm(3);
         }
 
         private void Table4_Click(object sender, EventArgs e)
         {
-            OpenTableForm(1006);
+            OpenTableForm(4);
         }
 
         private void Table5_Click(object sender, EventArgs e)
         {
-            OpenTableForm(1007);
+            OpenTableForm(5);
         }
 
         private void Table6_Click(object sender, EventArgs e)
         {
-            OpenTableForm(1008);
+            OpenTableForm(6);
         }
 
         private void OpenTableForm(int tableId)

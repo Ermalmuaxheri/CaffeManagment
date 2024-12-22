@@ -30,12 +30,12 @@ namespace edomndtest2
         private async Task OpenMenuForm()
         {
             // Make the asynchronous API call
-            string result = await ApiOrder.PlaceOrderAsync(tableId, 2);
+            string result = await ApiOrder.PlaceOrderAsync(tableId, 1);
             Debug.WriteLine(result);
 
 
             // Show the Menu form
-            Menu menuForm = new Menu();
+            Menu menuForm = new Menu(tableId);
             menuForm.Show();
         }
 
