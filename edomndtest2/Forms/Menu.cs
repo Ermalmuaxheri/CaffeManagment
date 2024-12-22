@@ -25,12 +25,12 @@ namespace edomndtest2
 
         private async void HotBtn_Click(object sender, EventArgs e)
         {
-            await FilterItemsByCategory(4);
+            await FilterItemsByCategory(1);
         }
 
         private async void ColdBtn_Click(object sender, EventArgs e)
         {
-            await FilterItemsByCategory(1);
+            await FilterItemsByCategory(2);
         }
 
         private async Task FilterItemsByCategory(int categoryId)

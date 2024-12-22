@@ -45,7 +45,31 @@ namespace edomndtest2.APIs
                 // Handle any errors (e.g., network issues)
                 return $"An error occurred: {ex.Message}";
             }
+
         }
+        public static async Task<string> GetOrderItemByOrderIdAsync(int orderId)
+        {
+            try
+            {
+                string url = $"https://localhost:7101/api/OI/GetOIFromOrderId?orderId={orderId}";
+                HttpResponseMessage response = await client.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseData = await response.Content.ReadAsStringAsync();
+                    return responseData; // Return the order item details as a string
+                }
+                else
+                {
+                    return "Error fetching order item information.";
+                }
+            }
+            catch (Exception ex)
+            {
+                return $"An error occurred: {ex.Message}";
+            }
+        }
+
 
     }
 }

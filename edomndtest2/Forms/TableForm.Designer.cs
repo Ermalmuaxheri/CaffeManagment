@@ -29,13 +29,17 @@
         private void InitializeComponent()
         {
             splitContainer1 = new SplitContainer();
-            VoidBtn = new Button();
-            DiscountBtn = new Button();
-            AddCoffeBtn = new Button();
-            DoneBtn = new Button();
-            listBox1 = new ListBox();
             checkoutBtn = new Button();
-            listBox2 = new ListBox();
+            VoidBtn = new Button();
+            AddCoffeBtn = new Button();
+            DiscountBtn = new Button();
+            DoneBtn = new Button();
+            MenuList = new ListView();
+            Name = new ColumnHeader();
+            Quantity = new ColumnHeader();
+            Price = new ColumnHeader();
+            AddBtn = new Button();
+            RemoveBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -60,59 +64,12 @@
             // 
             // splitContainer1.Panel2
             // 
-            splitContainer1.Panel2.Controls.Add(listBox2);
-            splitContainer1.Panel2.Controls.Add(listBox1);
+            splitContainer1.Panel2.Controls.Add(RemoveBtn);
+            splitContainer1.Panel2.Controls.Add(AddBtn);
+            splitContainer1.Panel2.Controls.Add(MenuList);
             splitContainer1.Size = new Size(673, 531);
             splitContainer1.SplitterDistance = 100;
             splitContainer1.TabIndex = 0;
-            // 
-            // VoidBtn
-            // 
-            VoidBtn.Location = new Point(546, 50);
-            VoidBtn.Name = "VoidBtn";
-            VoidBtn.Size = new Size(75, 23);
-            VoidBtn.TabIndex = 2;
-            VoidBtn.Text = "Void";
-            VoidBtn.UseVisualStyleBackColor = true;
-            // 
-            // DiscountBtn
-            // 
-            DiscountBtn.Location = new Point(546, 21);
-            DiscountBtn.Name = "DiscountBtn";
-            DiscountBtn.Size = new Size(75, 23);
-            DiscountBtn.TabIndex = 1;
-            DiscountBtn.Text = "%";
-            DiscountBtn.UseVisualStyleBackColor = true;
-            // 
-            // AddCoffeBtn
-            // 
-            AddCoffeBtn.Location = new Point(202, 1);
-            AddCoffeBtn.Name = "AddCoffeBtn";
-            AddCoffeBtn.Size = new Size(137, 97);
-            AddCoffeBtn.TabIndex = 0;
-            AddCoffeBtn.Text = "Add To Order";
-            AddCoffeBtn.UseVisualStyleBackColor = true;
-            AddCoffeBtn.Click += AddCoffeBtn_Click;
-            // 
-            // DoneBtn
-            // 
-            DoneBtn.Location = new Point(30, 1);
-            DoneBtn.Name = "DoneBtn";
-            DoneBtn.Size = new Size(137, 97);
-            DoneBtn.TabIndex = 0;
-            DoneBtn.Text = "Done";
-            DoneBtn.UseVisualStyleBackColor = true;
-            DoneBtn.Click += DoneBtn_Click;
-            // 
-            // listBox1
-            // 
-            listBox1.Dock = DockStyle.Fill;
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(0, 0);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(673, 427);
-            listBox1.TabIndex = 0;
             // 
             // checkoutBtn
             // 
@@ -124,15 +81,94 @@
             checkoutBtn.UseVisualStyleBackColor = true;
             checkoutBtn.Click += checkoutBtn_Click;
             // 
-            // listBox2
+            // VoidBtn
             // 
-            listBox2.Dock = DockStyle.Fill;
-            listBox2.FormattingEnabled = true;
-            listBox2.ItemHeight = 15;
-            listBox2.Location = new Point(0, 0);
-            listBox2.Name = "listBox2";
-            listBox2.Size = new Size(673, 427);
-            listBox2.TabIndex = 2;
+            VoidBtn.Location = new Point(546, 50);
+            VoidBtn.Name = "VoidBtn";
+            VoidBtn.Size = new Size(75, 23);
+            VoidBtn.TabIndex = 2;
+            VoidBtn.Text = "Void";
+            VoidBtn.UseVisualStyleBackColor = true;
+            // 
+            // AddCoffeBtn
+            // 
+            AddCoffeBtn.Location = new Point(202, 1);
+            AddCoffeBtn.Name = "AddCoffeBtn";
+            AddCoffeBtn.Size = new Size(137, 97);
+            AddCoffeBtn.TabIndex = 0;
+            AddCoffeBtn.Text = "Add To Order";
+            AddCoffeBtn.UseVisualStyleBackColor = true;
+            AddCoffeBtn.Click += AddCoffeBtn_Click;
+            // 
+            // DiscountBtn
+            // 
+            DiscountBtn.Location = new Point(546, 21);
+            DiscountBtn.Name = "DiscountBtn";
+            DiscountBtn.Size = new Size(75, 23);
+            DiscountBtn.TabIndex = 1;
+            DiscountBtn.Text = "%";
+            DiscountBtn.UseVisualStyleBackColor = true;
+            DiscountBtn.Click += DiscountBtn_Click;
+            // 
+            // DoneBtn
+            // 
+            DoneBtn.Location = new Point(30, 1);
+            DoneBtn.Name = "DoneBtn";
+            DoneBtn.Size = new Size(137, 97);
+            DoneBtn.TabIndex = 0;
+            DoneBtn.Text = "Done";
+            DoneBtn.UseVisualStyleBackColor = true;
+            DoneBtn.Click += DoneBtn_Click;
+            // 
+            // MenuList
+            // 
+            MenuList.BorderStyle = BorderStyle.None;
+            MenuList.Columns.AddRange(new ColumnHeader[] { Name, Quantity, Price });
+            MenuList.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            MenuList.Location = new Point(0, 0);
+            MenuList.Name = "MenuList";
+            MenuList.Size = new Size(551, 427);
+            MenuList.TabIndex = 0;
+            MenuList.UseCompatibleStateImageBehavior = false;
+            MenuList.View = View.Details;
+            MenuList.SelectedIndexChanged += listView1_SelectedIndexChanged;
+            // 
+            // Name
+            // 
+            Name.Text = "Name";
+            Name.Width = 250;
+            // 
+            // Quantity
+            // 
+            Quantity.Text = "Quantity";
+            Quantity.TextAlign = HorizontalAlignment.Center;
+            Quantity.Width = 150;
+            // 
+            // Price
+            // 
+            Price.Text = "Price";
+            Price.TextAlign = HorizontalAlignment.Right;
+            Price.Width = 150;
+            // 
+            // AddBtn
+            // 
+            AddBtn.Location = new Point(557, 63);
+            AddBtn.Name = "AddBtn";
+            AddBtn.Size = new Size(116, 122);
+            AddBtn.TabIndex = 1;
+            AddBtn.Text = "Add";
+            AddBtn.UseVisualStyleBackColor = true;
+            AddBtn.Click += AddBtn_Click;
+            // 
+            // RemoveBtn
+            // 
+            RemoveBtn.Location = new Point(557, 207);
+            RemoveBtn.Name = "RemoveBtn";
+            RemoveBtn.Size = new Size(116, 122);
+            RemoveBtn.TabIndex = 2;
+            RemoveBtn.Text = "Remove";
+            RemoveBtn.UseVisualStyleBackColor = true;
+            RemoveBtn.Click += RemoveBtn_Click;
             // 
             // TableForm
             // 
@@ -140,8 +176,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(673, 531);
             Controls.Add(splitContainer1);
-            Name = "TableForm";
-            Text = "TableForm";
+            //Name = "TableForm";
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
@@ -156,8 +191,12 @@
         private Button VoidBtn;
         private Button DiscountBtn;
         private Button AddCoffeBtn;
-        private ListBox listBox1;
         private Button checkoutBtn;
-        private ListBox listBox2;
+        private ListView MenuList;
+        private ColumnHeader Name;
+        private ColumnHeader Quantity;
+        private ColumnHeader Price;
+        private Button RemoveBtn;
+        private Button AddBtn;
     }
 }
