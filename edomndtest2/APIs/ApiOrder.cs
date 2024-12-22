@@ -1,10 +1,12 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using static edomndtest2.Menu;
 
 namespace edomndtest2.APIs
 {
@@ -56,7 +58,7 @@ namespace edomndtest2.APIs
                 if (response.IsSuccessStatusCode)
                 {
                     string menuItems = await response.Content.ReadAsStringAsync();
-                    return menuItems; 
+                    return menuItems;
                 }
                 else
                 {
@@ -69,55 +71,76 @@ namespace edomndtest2.APIs
             }
         }
 
+        // Get the open order ID for a given table
         public static async Task<int> GetOpenOrderId(int tableId)
-        {
-            string url = $"https://localhost:7101/api/Order/GetOrderByTableId?tableId={tableId}";
-            HttpResponseMessage response = await new HttpClient().GetAsync(url);
-
-            if (response.IsSuccessStatusCode)
-            {
-                string result = await response.Content.ReadAsStringAsync();
-
-                var jsonResponse = JsonConvert.DeserializeObject<ResponseWrapper>(result);
-
-                if (jsonResponse != null && jsonResponse.Data != null && jsonResponse.Data.Count > 0)
-                {
-                    return jsonResponse.Data[0].Id;
-                }
-            }
-
-            return 0;
-        }
-
-        public static async Task<string> UpdateOrderStatusAsync(int orderId, string status)
         {
             try
             {
-                string url = $"https://localhost:7101/api/Order/UpdateOrderStatus?orderId={orderId}&status={status}";
-                var content = new StringContent("", Encoding.UTF8, "application/json");
-                HttpResponseMessage response = await client.PostAsync(url, content);
+                string url = $"https://localhost:7101/api/Order/GetOrderByTableId?tableId={tableId}";
+                Debug.WriteLine(url);
+                HttpResponseMessage response = await client.GetAsync(url);
+                if (response.IsSuccessStatusCode)
+                {
+                    string result = await response.Content.ReadAsStringAsync();
+                    // Deserialize the JSON response
+                    var jsonResponse = JsonConvert.DeserializeObject<ResponseWrapper>(result);
+
+                    // Check if any orders are returned for the table
+                    if (jsonResponse != null && jsonResponse.Data != null)
+                    {
+                        // Find the first order with matching tableId and status "Open"
+                        var order = jsonResponse.Data.FirstOrDefault(o => o.TableId == tableId && o.Status == "Open");
+                        return order != null ? order.Id : 0;  // Return order ID if found, otherwise 0
+                    }
+                }
+
+                // Return 0 if no matching open orders are found
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                return 0; // Indicate failure
+            }
+        }
+
+        // A helper method for fetching orders by table ID
+        public static async Task<List<ListBoxItem>> GetOrdersForTableAsync(int tableId)
+        {
+            try
+            {
+                string url = $"https://localhost:7101/api/orders/{tableId}";
+
+                HttpResponseMessage response = await client.GetAsync(url);
 
                 if (response.IsSuccessStatusCode)
                 {
-                    return "Order status updated successfully!";
+                    string responseData = await response.Content.ReadAsStringAsync();
+
+                    // Deserialize the orders into ListBoxItem objects
+                    var orders = JsonConvert.DeserializeObject<List<ListBoxItem>>(responseData);
+                    return orders;
                 }
                 else
                 {
-                    return "Error updating the order status.";
+                    return new List<ListBoxItem>(); // Return an empty list if there's an error
                 }
             }
             catch (Exception ex)
             {
-                return $"An error occurred: {ex.Message}";
+                Console.WriteLine($"Error fetching orders: {ex.Message}");
+                return new List<ListBoxItem>();
             }
         }
 
+        // Response wrapper for order data
         public class ResponseWrapper
         {
             [JsonProperty("data")]
             public List<Order> Data { get; set; } = new List<Order>();
         }
 
+        // Order model
         public class Order
         {
             public int Id { get; set; }
@@ -127,4 +150,5 @@ namespace edomndtest2.APIs
             public string Time { get; set; } = string.Empty;
         }
     }
+
 }

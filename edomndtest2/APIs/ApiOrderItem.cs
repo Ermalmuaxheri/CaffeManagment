@@ -22,7 +22,6 @@ namespace edomndtest2.APIs
 
                 string jsonContent = JsonConvert.SerializeObject(orderData);
 
-                // Create the HTTP content with the JSON string
                 var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
                 // Send the POST request with JSON content

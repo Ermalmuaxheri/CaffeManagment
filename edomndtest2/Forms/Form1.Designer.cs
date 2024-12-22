@@ -61,7 +61,10 @@
             panel1 = new Panel();
             Table2 = new Button();
             Table1 = new Button();
+            switchUserBtn = new Button();
+            UserLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
+            splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
             SuspendLayout();
@@ -77,6 +80,8 @@
             // 
             splitContainer1.Panel1.AccessibleName = "";
             splitContainer1.Panel1.BackColor = Color.LightCoral;
+            splitContainer1.Panel1.Controls.Add(UserLabel);
+            splitContainer1.Panel1.Controls.Add(switchUserBtn);
             splitContainer1.Panel1.Paint += splitContainer1_Panel1_Paint;
             // 
             // splitContainer1.Panel2
@@ -388,6 +393,25 @@
             Table1.UseVisualStyleBackColor = false;
             Table1.Click += Table1_Click;
             // 
+            // switchUserBtn
+            // 
+            switchUserBtn.Location = new Point(959, 62);
+            switchUserBtn.Name = "switchUserBtn";
+            switchUserBtn.Size = new Size(103, 28);
+            switchUserBtn.TabIndex = 0;
+            switchUserBtn.Text = "Switch User";
+            switchUserBtn.UseVisualStyleBackColor = true;
+            // 
+            // UserLabel
+            // 
+            UserLabel.AutoSize = true;
+            UserLabel.Font = new Font("Segoe UI", 14F);
+            UserLabel.Location = new Point(980, 21);
+            UserLabel.Name = "UserLabel";
+            UserLabel.Size = new Size(60, 25);
+            UserLabel.TabIndex = 1;
+            UserLabel.Text = "User1";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -396,6 +420,8 @@
             Controls.Add(splitContainer1);
             Name = "Form1";
             Text = "Form1";
+            splitContainer1.Panel1.ResumeLayout(false);
+            splitContainer1.Panel1.PerformLayout();
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
@@ -437,5 +463,7 @@
         private Panel panel2;
         private Panel panel8;
         private Button Table2;
+        private Label UserLabel;
+        private Button switchUserBtn;
     }
 }
