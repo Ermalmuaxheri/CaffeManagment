@@ -41,12 +41,18 @@ namespace edomndtest2
 
         private async void DoneBtn_Click(object sender, EventArgs e)
         {
-            await TryTable();   
+            await TryOrder();
+            await TryTable();
             //this.Close();
         }
         private async Task TryTable()
         {
             string result = await ApiTable.GetTableInfoAsync(tableId);
+            MessageBox.Show(result);
+        }
+        private async Task TryOrder()
+        {
+            string result = await ApiOrder.GetLastOpenOrderAsync(tableId);
             MessageBox.Show(result);
         }
         private async Task CompleteOrder()
