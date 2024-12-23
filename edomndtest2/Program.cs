@@ -1,3 +1,5 @@
+using edomndtest2.Forms;
+
 namespace edomndtest2
 {
     internal static class Program
@@ -10,8 +12,16 @@ namespace edomndtest2
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            using (PinForm pinForm = new PinForm())
+            {
+                if (pinForm.ShowDialog() == DialogResult.OK)
+                {
+                    Application.Run(new Form1(pinForm.UserId, pinForm.UserName, pinForm.UserSurname));
+                }
+            }
         }
     }
 }

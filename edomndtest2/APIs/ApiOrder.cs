@@ -100,7 +100,7 @@ namespace edomndtest2.APIs
                 {
                     string result = await response.Content.ReadAsStringAsync();
                     // Deserialize the JSON response
-                    var jsonResponse = JsonConvert.DeserializeObject<ResponseWrapper>(result);
+                    var jsonResponse = JsonConvert.DeserializeObject<ResponseWrapper<Order>>(result);
 
                     // Check if any orders are returned for the table
                     if (jsonResponse != null && jsonResponse.Data != null)
@@ -120,6 +120,35 @@ namespace edomndtest2.APIs
                 return 0; // Indicate failure
             }
         }
+
+        public static async Task<List<Order>> GetOpenOrdersByTableId(int tableId)
+        {
+            try
+            {
+                string url = $"https://localhost:7101/api/Order/GetOrderByTableId?tableId={tableId}";
+                HttpResponseMessage response = await client.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string result = await response.Content.ReadAsStringAsync();
+                    var jsonResponse = JsonConvert.DeserializeObject<ResponseWrapper<Order>>(result);
+
+                    if (jsonResponse != null && jsonResponse.Data != null)
+                    {
+                        // Filter open orders for the specific table
+                        var openOrders = jsonResponse.Data.Where(o => o.TableId == tableId && o.Status == "Open").ToList();
+                        return openOrders;
+                    }
+                }
+                return new List<Order>();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error fetching open orders by table ID: {ex.Message}");
+                return new List<Order>();
+            }
+        }
+
 
         // A helper method for fetching orders by table ID
         public static async Task<List<ListBoxItem>> GetOrdersForTableAsync(int tableId)
@@ -151,10 +180,10 @@ namespace edomndtest2.APIs
         }
 
         // Response wrapper for order data
-        public class ResponseWrapper
+        public class ResponseWrapper<T>
         {
             [JsonProperty("data")]
-            public List<Order> Data { get; set; } = new List<Order>();
+            public List<T> Data { get; set; } = new List<T>();
         }
 
         // Order model

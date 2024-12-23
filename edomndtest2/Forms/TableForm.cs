@@ -17,12 +17,14 @@ namespace edomndtest2
     public partial class TableForm : Form
     {
         private int tableId;
+        private int userId;
 
-        public TableForm(int tableId)
+        public TableForm(int tableId, int userId)
         {
             InitializeComponent();
             this.tableId = tableId;
             CheckOpenOrder();
+            this.userId = userId;
 
             //listView1.View = View.Details;
             //listView1.Columns.Add("Name", 150, HorizontalAlignment.Left);
@@ -71,7 +73,7 @@ namespace edomndtest2
         private async Task OpenMenuForm()
         {
             // Make the asynchronous API call to place an order
-            string result = await ApiOrder.PlaceOrderAsync(tableId, 1);
+            string result = await ApiOrder.PlaceOrderAsync(tableId, userId);
             Debug.WriteLine(result);
 
             // Show the Menu form

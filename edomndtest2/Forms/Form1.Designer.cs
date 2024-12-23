@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             splitContainer1 = new SplitContainer();
+            UserLabel = new Label();
+            switchUserBtn = new Button();
             panel26 = new Panel();
             panel25 = new Panel();
             panel24 = new Panel();
@@ -61,8 +63,6 @@
             panel1 = new Panel();
             Table2 = new Button();
             Table1 = new Button();
-            switchUserBtn = new Button();
-            UserLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -123,6 +123,26 @@
             splitContainer1.Size = new Size(1100, 587);
             splitContainer1.SplitterDistance = 135;
             splitContainer1.TabIndex = 0;
+            // 
+            // UserLabel
+            // 
+            UserLabel.AutoSize = true;
+            UserLabel.Font = new Font("Segoe UI", 14F);
+            UserLabel.Location = new Point(980, 21);
+            UserLabel.Name = "UserLabel";
+            UserLabel.Size = new Size(60, 25);
+            UserLabel.TabIndex = 1;
+            UserLabel.Text = "User1";
+            // 
+            // switchUserBtn
+            // 
+            switchUserBtn.Location = new Point(959, 62);
+            switchUserBtn.Name = "switchUserBtn";
+            switchUserBtn.Size = new Size(103, 28);
+            switchUserBtn.TabIndex = 0;
+            switchUserBtn.Text = "Switch User";
+            switchUserBtn.UseVisualStyleBackColor = true;
+            switchUserBtn.Click += switchUserBtn_Click_1;
             // 
             // panel26
             // 
@@ -392,25 +412,6 @@
             Table1.Text = "1";
             Table1.UseVisualStyleBackColor = false;
             Table1.Click += Table1_Click;
-            // 
-            // switchUserBtn
-            // 
-            switchUserBtn.Location = new Point(959, 62);
-            switchUserBtn.Name = "switchUserBtn";
-            switchUserBtn.Size = new Size(103, 28);
-            switchUserBtn.TabIndex = 0;
-            switchUserBtn.Text = "Switch User";
-            switchUserBtn.UseVisualStyleBackColor = true;
-            // 
-            // UserLabel
-            // 
-            UserLabel.AutoSize = true;
-            UserLabel.Font = new Font("Segoe UI", 14F);
-            UserLabel.Location = new Point(980, 21);
-            UserLabel.Name = "UserLabel";
-            UserLabel.Size = new Size(60, 25);
-            UserLabel.TabIndex = 1;
-            UserLabel.Text = "User1";
             // 
             // Form1
             // 
