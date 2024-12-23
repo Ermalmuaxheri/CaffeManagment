@@ -38,6 +38,8 @@
             Name = new ColumnHeader();
             Quantity = new ColumnHeader();
             Price = new ColumnHeader();
+            label1 = new Label();
+            Totali = new Label();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -62,6 +64,8 @@
             // 
             // splitContainer1.Panel2
             // 
+            splitContainer1.Panel2.Controls.Add(Totali);
+            splitContainer1.Panel2.Controls.Add(label1);
             splitContainer1.Panel2.Controls.Add(MenuList);
             splitContainer1.Size = new Size(651, 531);
             splitContainer1.SplitterDistance = 100;
@@ -121,11 +125,10 @@
             // 
             MenuList.BorderStyle = BorderStyle.None;
             MenuList.Columns.AddRange(new ColumnHeader[] { Name, Quantity, Price });
-            MenuList.Dock = DockStyle.Fill;
             MenuList.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point, 0);
             MenuList.Location = new Point(0, 0);
             MenuList.Name = "MenuList";
-            MenuList.Size = new Size(651, 427);
+            MenuList.Size = new Size(651, 345);
             MenuList.TabIndex = 0;
             MenuList.UseCompatibleStateImageBehavior = false;
             MenuList.View = View.Details;
@@ -148,6 +151,26 @@
             Price.TextAlign = HorizontalAlignment.Center;
             Price.Width = 200;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(372, 365);
+            label1.Name = "label1";
+            label1.Size = new Size(80, 37);
+            label1.TabIndex = 1;
+            label1.Text = "Total:";
+            // 
+            // Totali
+            // 
+            Totali.AutoSize = true;
+            Totali.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Totali.Location = new Point(458, 365);
+            Totali.Name = "Totali";
+            Totali.Size = new Size(83, 37);
+            Totali.TabIndex = 2;
+            Totali.Text = "______";
+            // 
             // TableForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -157,6 +180,7 @@
             //Name = "TableForm";
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel2.ResumeLayout(false);
+            splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
             ResumeLayout(false);
@@ -174,5 +198,7 @@
         private ColumnHeader Name;
         private ColumnHeader Quantity;
         private ColumnHeader Price;
+        private Label Totali;
+        private Label label1;
     }
 }
