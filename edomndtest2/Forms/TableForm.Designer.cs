@@ -32,14 +32,13 @@
             checkoutBtn = new Button();
             VoidBtn = new Button();
             AddCoffeBtn = new Button();
-            DiscountBtn = new Button();
             DoneBtn = new Button();
+            Totali = new Label();
+            label1 = new Label();
             MenuList = new ListView();
             Name = new ColumnHeader();
             Quantity = new ColumnHeader();
             Price = new ColumnHeader();
-            label1 = new Label();
-            Totali = new Label();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -59,7 +58,6 @@
             splitContainer1.Panel1.Controls.Add(checkoutBtn);
             splitContainer1.Panel1.Controls.Add(VoidBtn);
             splitContainer1.Panel1.Controls.Add(AddCoffeBtn);
-            splitContainer1.Panel1.Controls.Add(DiscountBtn);
             splitContainer1.Panel1.Controls.Add(DoneBtn);
             // 
             // splitContainer1.Panel2
@@ -83,7 +81,7 @@
             // 
             // VoidBtn
             // 
-            VoidBtn.Location = new Point(546, 50);
+            VoidBtn.Location = new Point(543, 38);
             VoidBtn.Name = "VoidBtn";
             VoidBtn.Size = new Size(75, 23);
             VoidBtn.TabIndex = 2;
@@ -101,16 +99,6 @@
             AddCoffeBtn.UseVisualStyleBackColor = true;
             AddCoffeBtn.Click += AddCoffeBtn_Click;
             // 
-            // DiscountBtn
-            // 
-            DiscountBtn.Location = new Point(546, 21);
-            DiscountBtn.Name = "DiscountBtn";
-            DiscountBtn.Size = new Size(75, 23);
-            DiscountBtn.TabIndex = 1;
-            DiscountBtn.Text = "%";
-            DiscountBtn.UseVisualStyleBackColor = true;
-            DiscountBtn.Click += DiscountBtn_Click;
-            // 
             // DoneBtn
             // 
             DoneBtn.Location = new Point(30, 1);
@@ -120,6 +108,26 @@
             DoneBtn.Text = "Done";
             DoneBtn.UseVisualStyleBackColor = true;
             DoneBtn.Click += DoneBtn_Click;
+            // 
+            // Totali
+            // 
+            Totali.AutoSize = true;
+            Totali.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Totali.Location = new Point(458, 365);
+            Totali.Name = "Totali";
+            Totali.Size = new Size(83, 37);
+            Totali.TabIndex = 2;
+            Totali.Text = "______";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(372, 365);
+            label1.Name = "label1";
+            label1.Size = new Size(80, 37);
+            label1.TabIndex = 1;
+            label1.Text = "Total:";
             // 
             // MenuList
             // 
@@ -151,26 +159,6 @@
             Price.TextAlign = HorizontalAlignment.Center;
             Price.Width = 200;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(372, 365);
-            label1.Name = "label1";
-            label1.Size = new Size(80, 37);
-            label1.TabIndex = 1;
-            label1.Text = "Total:";
-            // 
-            // Totali
-            // 
-            Totali.AutoSize = true;
-            Totali.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Totali.Location = new Point(458, 365);
-            Totali.Name = "Totali";
-            Totali.Size = new Size(83, 37);
-            Totali.TabIndex = 2;
-            Totali.Text = "______";
-            // 
             // TableForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -191,7 +179,6 @@
         private SplitContainer splitContainer1;
         private Button DoneBtn;
         private Button VoidBtn;
-        private Button DiscountBtn;
         private Button AddCoffeBtn;
         private Button checkoutBtn;
         private ListView MenuList;
