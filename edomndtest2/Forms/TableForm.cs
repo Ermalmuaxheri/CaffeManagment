@@ -43,14 +43,14 @@ namespace edomndtest2
                 if (orderId > 0)
                 {
                     // There is an open order for this table
-                    MessageBox.Show($"Table {tableId} has an open order with Order ID: {orderId}", "Open Order", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show($"Table {tableId} has an open order with Order ID: {orderId}", "Open Order", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     FetchAndDisplayOrderItem();
                     //QETU NESE KA ORDER KY TABLE ATHER I KTHEN AMA SI JSON,,,,,,, EDHE PAK EDHE PAK.....:((((
                 }
                 else
                 {
                     // No open order for this table
-                    MessageBox.Show($"Table {tableId} does not have any open orders.", "No Open Order", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show($"Table {tableId} does not have any open orders.", "No Open Order", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
@@ -61,60 +61,6 @@ namespace edomndtest2
         }
 
 
-        //GET THE TABLE STATUS TO SEE IF ITS OCCUPIED OR NOT
-        //private async Task<string> GetTableStatus(int tableId)
-        //{
-        //    try
-        //    {
-        //        // Call API to get table info
-        //        string tableInfo = await ApiTable.GetTableInfoAsync(tableId);
-        //        Debug.WriteLine($"Table Info: {tableInfo}");
-        //        return tableInfo; // e.g., "Status: Occupied"
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show($"Error fetching table status: {ex.Message}");
-        //        return null;
-        //    }
-        //}
-
-        //private async void LoadExistingOrders()
-        //{
-        //    try
-        //    {
-        //        // Step 1: Get table status
-        //        string tableStatus = await GetTableStatus(tableId);
-
-        //        if (tableStatus == null || !tableStatus.Contains("Occupied"))
-        //        {
-        //            MessageBox.Show($"Table {tableId} is not occupied. No orders to display.");
-        //            return;
-        //        }
-
-        //        // Step 2: Fetch orders if table is occupied
-        //        var existingOrders = await ApiOrder.GetOrdersForTableAsync(tableId);
-
-        //        if (existingOrders == null || !existingOrders.Any())
-        //        {
-        //            MessageBox.Show($"No orders found for Table {tableId}.");
-        //        }
-        //        else
-        //        {
-        //            // Step 3: Display orders
-        //            StringBuilder ordersList = new StringBuilder("Orders:\n");
-        //            foreach (var order in existingOrders)
-        //            {
-        //                ordersList.AppendLine(order.ToString()); // Customize display format
-        //            }
-        //            MessageBox.Show(ordersList.ToString());
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show($"Error loading existing orders: {ex.Message}");
-        //    }
-        //}
-
 
 
         private async void AddCoffeBtn_Click(object sender, EventArgs e)
@@ -124,14 +70,20 @@ namespace edomndtest2
 
         private async Task OpenMenuForm()
         {
-            // Make the asynchronous API call
+            // Make the asynchronous API call to place an order
             string result = await ApiOrder.PlaceOrderAsync(tableId, 1);
             Debug.WriteLine(result);
 
-
             // Show the Menu form
             Menu menuForm = new Menu(tableId);
+            menuForm.OrderCompleted += RefreshTable;  // Subscribe to the OrderCompleted event
             menuForm.Show();
+        }
+
+        private void RefreshTable()
+        {
+            // Reload the table data after an order is completed
+            CheckOpenOrder();
         }
         private async void FetchAndDisplayOrderItem()
         {
@@ -249,17 +201,17 @@ namespace edomndtest2
         private async Task TryTable()
         {
             string result = await ApiTable.GetTableInfoAsync(tableId);
-            MessageBox.Show(result);
+            //MessageBox.Show(result);
         }
         private async Task CompleteOrder()
         {
             string result = await ApiTable.GetTableInfoAsync(tableId);
-            MessageBox.Show(result);
+            //MessageBox.Show(result);
 
             if (result.Contains("Status: Occupied"))
             {
                 // Table is occupied, take some action
-                MessageBox.Show("The table is currently occupied, should be deleted now ishalla");
+                //MessageBox.Show("The table is currently occupied, should be deleted now ishalla");
 
 
             }
@@ -271,14 +223,52 @@ namespace edomndtest2
             else
             {
                 // Handle unknown or unrecognized status
-                MessageBox.Show("Could not determine the table status.");
+                //MessageBox.Show("Could not determine the table status.");
             }
         }
 
         private async void checkoutBtn_Click(object sender, EventArgs e)
         {
-            await CompleteOrder();
+            try
+            {
+                // Get the open order ID for the table
+                int orderId = await ApiOrder.GetOpenOrderId(tableId);
+
+                if (orderId > 0)
+                {
+                    // Confirm before marking the order as closed
+                    var confirmResult = MessageBox.Show($"Are you sure you want to close the order with ID {orderId}?",
+                                                        "Confirm Close Order",
+                                                        MessageBoxButtons.YesNo,
+                                                        MessageBoxIcon.Question);
+
+                    if (confirmResult == DialogResult.Yes)
+                    {
+                        // Close the order
+                        bool isUpdated = await ApiOrder.UpdateOrderStatusAsync(orderId, tableId, "Closed");
+
+                        if (isUpdated)
+                        {
+                            MessageBox.Show("Order has been successfully closed.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to close the order. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No open order found to close.", "No Order", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while closing the order: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
 
         private void DiscountBtn_Click(object sender, EventArgs e)
         {
@@ -290,63 +280,63 @@ namespace edomndtest2
 
         }
 
-        // Add Button Click Event
-        private void AddBtn_Click(object sender, EventArgs e)
+        private async void VoidBtn_Click(object sender, EventArgs e)
         {
-            // Get the selected item from the ListView
-            if (MenuList.SelectedItems.Count > 0)
+            try
             {
-                ListViewItem selectedItem = MenuList.SelectedItems[0];
-                // Get the current quantity (in the second column)
-                int currentQuantity = int.Parse(selectedItem.SubItems[1].Text);
+                // Step 1: Confirmation dialog
+                var result = MessageBox.Show(
+                    "Are you sure you want to void this order?",
+                    "Confirm Void",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                );
 
-                // Increase the quantity
-                currentQuantity++;
-
-                // Update the quantity column
-                selectedItem.SubItems[1].Text = currentQuantity.ToString();
-
-                // Update the subtotal column (assuming subtotal is in the third column)
-                decimal price = decimal.Parse(selectedItem.SubItems[2].Text.Replace("$", "")); // Get the price
-                selectedItem.SubItems[2].Text = $"${(price * currentQuantity):F2}"; // Update the subtotal
-            }
-            else
-            {
-                MessageBox.Show("Please select an item to add quantity.", "No Item Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        // Remove Button Click Event
-        private void RemoveBtn_Click(object sender, EventArgs e)
-        {
-            // Get the selected item from the ListView
-            if (MenuList.SelectedItems.Count > 0)
-            {
-                ListViewItem selectedItem = MenuList.SelectedItems[0];
-                // Get the current quantity (in the second column)
-                int currentQuantity = int.Parse(selectedItem.SubItems[1].Text);
-
-                // If the quantity is greater than 1, decrease the quantity
-                if (currentQuantity > 1)
+                if (result != DialogResult.Yes)
                 {
-                    currentQuantity--;
-                    selectedItem.SubItems[1].Text = currentQuantity.ToString();
+                    // User chose not to void the order
+                    return;
+                }
 
-                    // Update the subtotal column
-                    decimal price = decimal.Parse(selectedItem.SubItems[2].Text.Replace("$", "")); // Get the price
-                    selectedItem.SubItems[2].Text = $"${(price * currentQuantity):F2}"; // Update the subtotal
+                // Step 2: Get the open order ID for the table
+                int orderId = await ApiOrder.GetOpenOrderId(tableId);
+
+                if (orderId > 0)
+                {
+                    // Step 3: Close the order
+                    bool isClosed = await ApiOrder.UpdateOrderStatusAsync(orderId, tableId, "Closed");
+
+                    if (isClosed)
+                    {
+                        // Step 4: Delete the order
+                        bool isDeleted = await ApiOrder.DeleteOrderAsync(orderId);
+
+                        if (isDeleted)
+                        {
+                            MessageBox.Show("Order successfully closed and deleted.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to delete the order after closing it.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to close the order. Unable to proceed with deletion.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    // If quantity is 1, remove the item from the ListView
-                    MenuList.Items.Remove(selectedItem);
+                    MessageBox.Show("No open order found to void.", "No Order", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Please select an item to remove quantity.", "No Item Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show($"An error occurred while voiding the order: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
     }
 }

@@ -12,9 +12,26 @@ namespace edomndtest2.APIs
 {
     public static class ApiOrder
     {
-        private static readonly HttpClient client = new HttpClient();  // Shared HttpClient instance
+        private static readonly HttpClient client = new HttpClient();  
 
         // Place an order (e.g., coffee)
+        public static async Task<bool> UpdateOrderAsync(int tableId, string jsonOrder)
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    var content = new StringContent(jsonOrder, Encoding.UTF8, "application/json");
+                    var response = await client.PutAsync($"https://your-api-url.com/orders/{tableId}", content);
+                    return response.IsSuccessStatusCode;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public static async Task<string> PlaceOrderAsync(int tableId, int userId)
         {
             try
@@ -149,6 +166,55 @@ namespace edomndtest2.APIs
             public string Status { get; set; } = string.Empty;
             public string Time { get; set; } = string.Empty;
         }
+        public static async Task<bool> DeleteOrderAsync(int orderId)
+        {
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var response = await client.DeleteAsync($"https://localhost:7101/api/Order/DeleteOrder?id={orderId}");
+                    return response.IsSuccessStatusCode;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error deleting order: {ex.Message}");
+            }
+
+            return false; // Failed to delete order
+        }
+
+        public static async Task<bool> UpdateOrderStatusAsync(int orderId, int tableId, string status)
+        {
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var orderUpdate = new
+                    {
+                        tableId = tableId,
+                        userId = 0, // Adjust if user ID needs to be dynamic
+                        status = status,
+                        time = DateTime.UtcNow.ToString("o"),
+                        createdAt = DateTime.UtcNow.ToString("o"),
+                        updatedAt = DateTime.UtcNow.ToString("o")
+                    };
+
+                    var jsonContent = new StringContent(JsonConvert.SerializeObject(orderUpdate), Encoding.UTF8, "application/json");
+                    var response = await client.PutAsync($"https://localhost:7101/api/Order/UpdateOrder?id={orderId}", jsonContent);
+
+                    return response.IsSuccessStatusCode;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error updating order status: {ex.Message}");
+            }
+
+            return false; // Failed to update order
+        }
+
+
     }
 
 }

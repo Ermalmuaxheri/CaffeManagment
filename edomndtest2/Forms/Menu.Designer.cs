@@ -70,7 +70,7 @@
             HotOrCold.Dock = DockStyle.Fill;
             HotOrCold.Location = new Point(0, 0);
             HotOrCold.Name = "HotOrCold";
-            HotOrCold.Size = new Size(1038, 492);
+            HotOrCold.Size = new Size(1038, 508);
             HotOrCold.TabIndex = 2;
             // 
             // DoneBtn
@@ -123,14 +123,14 @@
             itemPanel.Location = new Point(0, 0);
             itemPanel.Name = "itemPanel";
             itemPanel.Padding = new Padding(300, 0, 0, 0);
-            itemPanel.Size = new Size(1038, 492);
+            itemPanel.Size = new Size(1038, 508);
             itemPanel.TabIndex = 6;
             // 
             // Menu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1038, 492);
+            ClientSize = new Size(1038, 508);
             Controls.Add(HotOrCold);
             Name = "Menu";
             Text = "Menu";

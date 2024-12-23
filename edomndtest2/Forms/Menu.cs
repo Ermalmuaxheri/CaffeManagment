@@ -12,6 +12,7 @@ namespace edomndtest2
     {
         private readonly HttpClient _httpClient;
         private readonly ApiItems _apiItems;
+        public event Action OrderCompleted; // Event to notify order completion
 
         private int tableId;
 
@@ -151,6 +152,11 @@ namespace edomndtest2
                 }
 
                 MessageBox.Show("All items added to the order successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Trigger the event before closing
+                OrderCompleted?.Invoke();
+
+                this.Close();
             }
             catch (Exception ex)
             {

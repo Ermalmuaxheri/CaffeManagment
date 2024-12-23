@@ -38,8 +38,6 @@
             Name = new ColumnHeader();
             Quantity = new ColumnHeader();
             Price = new ColumnHeader();
-            AddBtn = new Button();
-            RemoveBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -64,10 +62,8 @@
             // 
             // splitContainer1.Panel2
             // 
-            splitContainer1.Panel2.Controls.Add(RemoveBtn);
-            splitContainer1.Panel2.Controls.Add(AddBtn);
             splitContainer1.Panel2.Controls.Add(MenuList);
-            splitContainer1.Size = new Size(673, 531);
+            splitContainer1.Size = new Size(651, 531);
             splitContainer1.SplitterDistance = 100;
             splitContainer1.TabIndex = 0;
             // 
@@ -89,6 +85,7 @@
             VoidBtn.TabIndex = 2;
             VoidBtn.Text = "Void";
             VoidBtn.UseVisualStyleBackColor = true;
+            VoidBtn.Click += VoidBtn_Click;
             // 
             // AddCoffeBtn
             // 
@@ -124,10 +121,11 @@
             // 
             MenuList.BorderStyle = BorderStyle.None;
             MenuList.Columns.AddRange(new ColumnHeader[] { Name, Quantity, Price });
+            MenuList.Dock = DockStyle.Fill;
             MenuList.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point, 0);
             MenuList.Location = new Point(0, 0);
             MenuList.Name = "MenuList";
-            MenuList.Size = new Size(551, 427);
+            MenuList.Size = new Size(651, 427);
             MenuList.TabIndex = 0;
             MenuList.UseCompatibleStateImageBehavior = false;
             MenuList.View = View.Details;
@@ -136,45 +134,25 @@
             // Name
             // 
             Name.Text = "Name";
-            Name.Width = 250;
+            Name.Width = 200;
             // 
             // Quantity
             // 
             Quantity.Text = "Quantity";
             Quantity.TextAlign = HorizontalAlignment.Center;
-            Quantity.Width = 150;
+            Quantity.Width = 200;
             // 
             // Price
             // 
             Price.Text = "Price";
-            Price.TextAlign = HorizontalAlignment.Right;
-            Price.Width = 150;
-            // 
-            // AddBtn
-            // 
-            AddBtn.Location = new Point(557, 63);
-            AddBtn.Name = "AddBtn";
-            AddBtn.Size = new Size(116, 122);
-            AddBtn.TabIndex = 1;
-            AddBtn.Text = "Add";
-            AddBtn.UseVisualStyleBackColor = true;
-            AddBtn.Click += AddBtn_Click;
-            // 
-            // RemoveBtn
-            // 
-            RemoveBtn.Location = new Point(557, 207);
-            RemoveBtn.Name = "RemoveBtn";
-            RemoveBtn.Size = new Size(116, 122);
-            RemoveBtn.TabIndex = 2;
-            RemoveBtn.Text = "Remove";
-            RemoveBtn.UseVisualStyleBackColor = true;
-            RemoveBtn.Click += RemoveBtn_Click;
+            Price.TextAlign = HorizontalAlignment.Center;
+            Price.Width = 200;
             // 
             // TableForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(673, 531);
+            ClientSize = new Size(651, 531);
             Controls.Add(splitContainer1);
             //Name = "TableForm";
             splitContainer1.Panel1.ResumeLayout(false);
@@ -196,7 +174,5 @@
         private ColumnHeader Name;
         private ColumnHeader Quantity;
         private ColumnHeader Price;
-        private Button RemoveBtn;
-        private Button AddBtn;
     }
 }
